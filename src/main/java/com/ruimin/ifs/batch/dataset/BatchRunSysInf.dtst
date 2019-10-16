@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+	<Define desc="系统信息" type="call" pagesize="15" log="false" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:getRunSysInf" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="id" desc="主键" xpath="/id"/>
+		<Field id="systemName" desc="系统名称" xpath="/systemName" required="true" width="300" size="20"/>
+		<Field id="tbsdy" desc="交易日期" edittype="datebox" datatype="date" required="true"  xpath="/tbsdy" />
+		<Field id="bhdate" desc="批量日期" edittype="datebox" datatype="date" required="true"  xpath="/bhdate" />
+		<Field id="lbhdate" desc="上一批量日期" edittype="datebox" datatype="date"  xpath="/lbhdate" />
+		<Field id="systemType" desc="系统类型" required="true" size="2" xpath="/systemType"/>
+		<Field id="status" desc="系统状态" edittype="combobox" datasource="LIST:0,联机状态;1,批量状态" xpath="/status" />
+		<Field id="miscflgs" desc="扩展字段" width="300" size="20" xpath="/miscflgs"/>
+	</Fields>
+	<Commands>
+		<Command id="btnSave" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:updateSystemInf" url="#" txn="" icon="fa fa-save"/>
+	</Commands>
+</Data>

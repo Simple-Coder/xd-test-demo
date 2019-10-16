@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="接入银行返回码配置" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.mng.comp.BeReturnCodeAction:queryBeReturnCode" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="uuid" desc="id" status="F" edittype="textbox" datatype="string" size="32" xpath="/uuid" />
+        <Field id="beReturnCode" desc="银企平台返回码" align="center" status="F" required="true" edittype="textbox" datatype="string" size="20" xpath="/beReturnCode" />
+        <Field id="returnCodeDesc" desc="描述" align="center" status="F" required="true" edittype="textbox" datatype="string" size="100" xpath="/returnCodeDesc" />
+        <Field id="returnCodeType" desc="类型" align="center" status="F" required="true" edittype="combobox" datasource="DDIC:209" datatype="string" size="1" xpath="/returnCodeType" />
+        <Field id="status" desc="状态" align="center" status="F" required="true" edittype="combobox" datasource="DDIC:210" datatype="string" size="1" xpath="/status" />
+		<Field id="createDate" desc="创建时间" align="center" status="F" readonly="true" edittype="textbox" datatype="timestamp" required="false" size="30" xpath="/createDate"/>
+        <Field id="lastUpdateUser" desc="操作人" align="center" status="F" readonly="true" edittype="textbox" required="false"  datatype="string" size="30" xpath="/lastUpdateUser"/>
+        <Field id="lastUpdateTime" desc="更新时间" align="center" status="F" readonly="true" edittype="textbox"  datatype="string" required="false" size="30" xpath="/lastUpdateTime"/>
+		<Field id="opr" desc="操作"  edittype="textbox" datatype="string" xpath="" />
+		<!-- 查询条件 -->
+		<Field id="queryBeReturnCode" desc="银企平台返回码" datatype="string" />
+		<Field id="queryReturnCodeType" desc="类型" edittype="combobox" datatype="string" datasource="DDIC:209" />
+	</Fields>
+	<Commands>
+	    <Command id="btnAdd" desc="新增" type="addrecord" url="#" txn="" icon="fa fa-plus"/>
+        <Command id="btnSaveAdd" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BeReturnCodeAction:addBeReturnCode" url="#" txn=""/>
+        <Command id="btnSaveUpdate" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BeReturnCodeAction:updateBeReturnCode" url="#" txn=""/>
+        <Command id="btnDelete" desc="删除" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BeReturnCodeAction:deleteBeReturnCode" url="#" txn=""/>
+    </Commands>
+</Data>

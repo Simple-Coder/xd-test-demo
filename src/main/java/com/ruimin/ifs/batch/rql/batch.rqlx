@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://sqlmap.rql.org/rql-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://sqlmap.rql.org/rql-mapper http://sqlmap.rql.org/rql-mapper">
+	
+	<select id="queryJobInfByPage" paramType="map" resultType="com.ruimin.ifs.batch.bean.po.IfsBatJobInf">
+		select * from IFS_BAT_JOB_INF order by JOBNO
+	</select>
+	
+	<select id="queryBhProcStep" paramType="map" resultType="com.ruimin.ifs.po.TblBhProcStep">
+		select * from IFS_BAT_PROC_STEP where JOBNO=#{jobno} order by step,sub_step
+	</select>
+	
+	<select id="queryBhProcStepStatus" paramType="map" resultType="com.ruimin.ifs.po.TblBhProcStatus">
+		select * from IFS_BAT_PROC_STATUS where JOBNO=#{jobno} and STEP=#{step} and SUB_STEP=#{substep} and BHDATE=#{bhdate}
+	</select>
+	
+	<select id="queryBatchRunTimeParam" paramType="map" resultType="com.ruimin.ifs.batch.bean.vo.BatchRunTimeVo">
+		select PARAM_ID,MAGIC_ID,PARAM_VALUE_TX,DESC0 from IFS_SYS_PARAM where PARAM_ID=#{paramId} and MAGIC_ID!=#{magicId}
+	</select>
+	
+	<select id="queryIfsProcStepLog" paramType="map" resultType="com.ruimin.ifs.batch.bean.po.IfsBatProcLog">
+		select * from IFS_BAT_PROC_LOG where BHDATE=#{bhdate} and JOBNO=#{jobno} and STEP=#{step} and SUB_STEP=#{substep}
+	</select>
+	
+	<select id="monitorJobStepSideTotal" paramType="map" resultType="map">
+		select status,count(1) as cnt from IFS_BAT_PROC_LOG where BHDATE=#{bhdate} and JOBNO=#{jobNo} and STEP=#{stepNo}  group by STATUS 
+	</select>
+	
+	<select id="queryIfsProcStepInfo" paramType="map" resultType="com.ruimin.ifs.po.TblBhProcStep">
+		select * from IFS_BAT_PROC_STEP  where RUNTIME in (#{runtimes})
+		<if test="jobNo != ''"> and JOBNO = #{jobNo}</if>
+	    order by JOBNO,STEP,SUB_STEP
+	</select>
+	
+	<select id="queryBatchStatus" paramType="string" resultType="com.ruimin.ifs.batch.bean.vo.JobInfVO">
+		select inf.jobno,inf.misc,status.status,status.start_time,status.end_time,status.step,status.bhdate from IFS_BAT_JOB_INF inf left join IFS_BAT_PROC_STATUS status on 
+		 inf.jobno = status.jobno and status.bhdate = #{bhdate} order by inf.jobno 
+	</select>
+	
+	<select id="monitorJobInf" paramType="map" resultType="com.ruimin.ifs.batch.bean.vo.BatchMonitorJob">
+		select jf.JOBNO,jf.MISC,pst.BHDATE,pst.STEP,pst.START_TIME,pst.END_TIME,pst.STATUS from IFS_BAT_JOB_INF jf left join (select * from IFS_BAT_PROC_STATUS where BHDATE=#{bhdate}) pst on
+		jf.JOBNO=pst.JOBNO  order by jf.jobno
+	</select>
+	
+	<select id="monitorJobStepCnt" paramType="int" resultType="int">
+		select ID from IFS_BAT_PROC_STEP where JOBNO=#{jobno}
+	</select>
+	
+	<select id="monitorJobStepStartEndTm" paramType="map" resultType="map">
+		select min(START_TIME) as START_TIME,max(END_TIME) as END_TIME from IFS_BAT_PROC_LOG where BHDATE=#{bhdate} and JOBNO=#{jobNo} and STEP=#{stepNo}
+	</select>
+	
+	<select id="monitorStepSideLog" paramType="map" resultType="com.ruimin.ifs.batch.bean.po.IfsBatProcLog">
+		select * from IFS_BAT_PROC_LOG where BHDATE=#{bhdate} and JOBNO=#{jobNo} and STEP=#{stepNo}  order by START_TIME,ID
+	</select>
+</mapper> 

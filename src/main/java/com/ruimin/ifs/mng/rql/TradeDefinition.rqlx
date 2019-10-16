@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://sqlmap.rql.org/rql-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://sqlmap.rql.org/rql-mapper http://sqlmap.rql.org/rql-mapper">
+
+	<!-- 交易配置信息模糊查询 -->
+	<select id="queryTradeDefinitionList" paramType="map" resultType="com.ruimin.ifs.po.TblBeTradeDef">
+        <![CDATA[
+        SELECT UUID,TRADE_CODE,TRADE_NAME,TRADE_STATUS,TRADE_OPEN_TIME,TRADE_CLOSE_TIME,CREATE_DATE,LAST_UPDATE_TIME,LAST_UPDATE_USER
+        FROM TBL_BE_TRADE_DEF
+            WHERE 1=1 ]]>
+        <if test = "queryTradeName != ''"><![CDATA[AND TRADE_NAME like #{queryTradeName} ]]></if>
+        <if test = "queryTradeCode != ''"><![CDATA[AND TRADE_CODE = #{queryTradeCode} ]]></if>
+        <![CDATA[ORDER BY TRADE_CODE]]>
+    </select>
+
+    <!-- 交易配置信息查询 -->
+	<select id="queryTradeDefinition" paramType="map" resultType="int">
+        <![CDATA[
+        SELECT COUNT(1)
+        FROM TBL_BE_TRADE_DEF
+            WHERE 1=1 ]]>
+        <if test = "queryTradeName != ''"><![CDATA[AND TRADE_NAME like #{queryTradeName} ]]></if>
+        <if test = "queryTradeCode != ''"><![CDATA[AND TRADE_CODE = #{queryTradeCode} ]]></if>
+    </select>
+</mapper>

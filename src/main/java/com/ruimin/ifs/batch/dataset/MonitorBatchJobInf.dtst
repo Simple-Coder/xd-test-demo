@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+	<Define desc="批量监控" type="call" pagesize="15" log="false" flowid="com.ruimin.ifs.batch.comp.BatchMonitorAction:listBatchJobInfo" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="jobno" desc="作业号" status="F" datatype="int" xpath="/jobno" />
+		<Field id="misc" desc="批量任务名称" status="F" datatype="string" xpath="/misc" />
+		<Field id="stepCnt" desc="子步骤数量" status="F" datatype="int" xpath="/stepCnt" />
+		<Field id="startTime" desc="开始时间" status="F" datatype="timestamp" xpath="/startTime" />
+		<Field id="endTime" desc="结束时间" status="F" datatype="timestamp" xpath="/endTime" />
+		<Field id="status" desc="运行状态" status="F" datatype="string" xpath="/status" />
+		<Field id="opr" desc="操作" xpath="/jobno"></Field>
+		<Field id="bhdate" desc="批量日期" status="F" edittype="datebox" datatype="date" xpath="/bhdate" required="true"/>
+	</Fields>
+	<Commands>
+		<Command id="startJob" desc="启动批量" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchMonitorAction:startBatchJob" url="#" txn="" icon="fa fa-paly" />
+		<Command id="stopBtch" desc="停止批量总控" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchMonitorAction:stopBtch" url="#" txn="" icon="fa fa-stop" />
+	</Commands>
+</Data>

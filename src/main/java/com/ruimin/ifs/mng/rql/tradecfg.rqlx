@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://sqlmap.rql.org/rql-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://sqlmap.rql.org/rql-mapper http://sqlmap.rql.org/rql-mapper">
+
+	<!-- 交易配置信息查询 -->
+	<select id="queryTradeConfList" paramType="map" resultType="com.ruimin.ifs.po.TblBeTradeCfg">
+        <![CDATA[
+        SELECT UUID,TRADE_CODE,TRADE_NAME,BANK_CODE,TRADE_STATUS,LOOP_TIME,TRADE_OPEN_TIME,TRADE_CLOSE_TIME,TRADE_LAST_RUN_TIME,
+        THREAD_NUMS,SINGLE_DEAL_NUM,TRADE_DESC,TRADE_RESP_ERR_CODE,CREATE_DATE,LAST_UPDATE_TIME,LAST_UPDATE_USER,SWITCH_STOP_FLAG,
+        TIMED_EXEC_TIME,TRADE_PATTERN
+        FROM TBL_BE_TRADE_CFG t
+            WHERE 1=1 ]]>
+        <if test = "qBankCode != ''"><![CDATA[AND BANK_CODE = #{qBankCode} ]]></if>
+        <if test = "tradeName != ''"><![CDATA[AND TRADE_NAME like #{tradeName} ]]></if>
+        <![CDATA[ORDER BY BANK_CODE,TRADE_CODE]]>
+    </select>
+
+    <!-- 根据交易码查询交易配置信息 -->
+    <select id="queryCountTradeCode" paramType="map" resultType="int">
+        <![CDATA[select
+            count(1)
+            from TBL_BE_TRADE_CFG
+            where 1=1 ]]>
+        <if test = "tradeCode != ''"><![CDATA[and TRADE_CODE = #{tradeCode} ]]></if>
+    </select>
+    <!-- 根据交易码查询交易配置信息 -->
+        <select id="queryTranName" paramType="map" resultType="java.lang.String">
+           select TRADE_NAME from TBL_BE_TRADE_CFG where 1=1
+                  <if test = "tradeCode != ''"><![CDATA[AND TRADE_CODE = #{tradeCode} ]]></if>
+        </select>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+	<Define desc="批量参数设置" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:listAllBhProcStep" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="id" desc="主键" xpath="/id" />
+		<Field id="jobno" desc="任务编号" edittype="integerbox" datatype="int" xpath="/jobno" readonly="true" colspan="4"/>
+		<Field id="step" desc="步骤号" edittype="integerbox" datatype="int" required="true" xpath="/step" />
+		<Field id="subStep" desc="子步骤号" edittype="integerbox" datatype="int" required="true" xpath="/subStep" />
+		<Field id="processFunction" desc="步骤处理类" required="true" size="120" xpath="/processFunction" width="500" colspan="4"  />
+		<Field id="processParam" desc="步骤参数" required="false"  edittype="textbox" rows="3" width="500" size="300" xpath="/processParam"  colspan="4"/>
+		<Field id="runtime" desc="运行时间" required="true" xpath="/runtime" edittype="combobox" datasource="LIST:9N,不运行;90,每天;91,每旬;93,每月末;94,每季末;95,每半年;96,每年;41,每周一;42,每周二;43,每周三;44,每周四;45,每周五;46,每周六;47,每周末;00,每月某日"/>
+		<Field id="runtimeDay" desc="每月某日" edittype="integerbox" datatype="int" readonly="true"/>
+		<Field id="subFlag" desc="多分行并行标志" edittype="combobox" datasource="DDIC:110" xpath="/subFlag" required="true"/>
+		<Field id="maxproc" desc="同时进行的最大进程数" required="true" xpath="/maxproc" edittype="integerbox" datatype="int" default="3"/>
+		<Field id="tempFlag" desc="临时取消标志" required="true" edittype="combobox" datasource="DDIC:111" xpath="/tempFlag"/>
+		<Field id="suspend" desc="是否出错忽略" required="true" edittype="combobox" datasource="DDIC:112" xpath="/suspend"/>
+		<Field id="auto" desc="子步骤是否允许独立运行" required="true" edittype="combobox" datasource="DDIC:113" xpath="/auto"/>
+		<Field id="repeatCnt" desc="失败重试次数" required="true" xpath="/repeatCnt" edittype="integerbox" datatype="int"/>
+		<Field id="desc0" desc="步骤描述"  required="true" size="56" edittype="textbox"  colspan="4" width="500" xpath="/desc0" />
+		<Field id="desc1" desc="预留信息1" required="false" edittype="textarea" rows="3" colspan="4" width="500" size="512" xpath="/desc1" />
+		<Field id="desc2" desc="预留信息2" required="false" edittype="textarea" rows="3" colspan="4" width="500" size="512" xpath="/desc2" />
+		<Field id="opr" desc="操作" xpath="/id" />
+	</Fields>
+	<Commands>
+		<Command id="btStepAdd" desc="添加步骤" type="addrecord" url="#" txn="" icon="fa fa-plus" />
+		<Command id="btStepDelete" desc="删除步骤" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:delteProcStep" url="#" txn="" />
+		<Command id="btStepSave" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:saveOrUpdateProcStep" url="#" txn="" icon="fa fa-save" />
+	</Commands>
+</Data>

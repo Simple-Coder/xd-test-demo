@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://sqlmap.rql.org/rql-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://sqlmap.rql.org/rql-mapper http://sqlmap.rql.org/rql-mapper">
+
+	<!-- 响应时长查询 -->
+	<select id="queryRspTime" paramType="map" resultType="com.ruimin.ifs.login.process.bean.RspTimeBean">
+        select bank_name as bankname,resp_sys as rspsys,avg(pertime) as avgtime,max(pertime) as maxtime from
+        (
+        select bank_name,resp_sys,(resp_time-req_time) as pertime from tbl_be_record_log t1,tbl_be_bank t2
+                                where 1=1
+                                and t1.resp_sys=t2.bank_code
+                                <if test = "req_time != ''"><![CDATA[and req_time >= #{req_time} ]]></if>
+                                <if test = "resp_time != ''"><![CDATA[and resp_time <= #{resp_time} ]]></if>
+        )
+        group by resp_sys,bank_name
+    </select>
+</mapper>

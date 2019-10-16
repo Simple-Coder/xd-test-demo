@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 拦截器 -->
+<interceptors>
+	<flow>
+	</flow>
+	<action>
+	<!-- 
+		<interceptor name="MyInterceptor" class="com.ruimin.ifs.interceptor.MyActionInterceptor" matches="com.ruimin.ifs.login.comp.*.snow*" />
+		-->
+	</action>
+	<channel>
+
+	</channel>
+	<server>
+
+	</server>
+	<dao>
+		<!-- 数据库对象操作拦截器 -->
+		<!--<interceptor name="写入操作放入创建时间及创建人" class="com.ruimin.ifs.interceptor.TestInsertDaoInterceptor" matches="insert"/>
+		<interceptor name="更新对象更新最后时间和最后操作人" class="com.ruimin.ifs.interceptor.TestUpdateDaoInterceptor" matches="com.ruimin.ifs.po.*update"/>
+		-->
+	</dao>
+</interceptors>

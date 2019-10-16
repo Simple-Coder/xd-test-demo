@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="交易量统计" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.mng.comp.TradeNumQueryAction:queryTradeNum" expmaxrcd="100" flowctxid="false" flowretid="false" />
+	<Fields>
+
+        <Field id="respSys" desc="银行" align="center" status="F" required="true" edittype="combobox" datatype="string" datasource="DDIC:301" size="10" xpath="/respSys" />
+        <Field id="tranCode" desc="交易类型" align="center" status="F" required="true" edittype="combobox" datatype="string" datasource="DDIC:300" size="10" xpath="/tranCode" />
+
+		<Field id="totalNum" desc="总量" required="false" edittype="textbox" datatype="string" method="None" readonly="false" size="17"  align="center" status="F" default="false" xpath="/totalNum" />
+	 	<Field id="successNum" desc="成功量" required="false" edittype="textbox" datatype="string" method="None"  readonly="false" size="20" status="N" align="center" default="" xpath="/successNum" />
+        <Field id="successPer" desc="成功率" status="F"  edittype="textarea"  required="false"  datatype="string" method="None"  rows="10" size="4000"  xpath="/successPer" default="" width="400"/>
+        <Field id="failureNum" desc="失败量" status="F" align="center" edittype="textarea"  required="false"  datatype="string" method="None" rows="10" size="4000"  xpath="/failureNum" default="" width="400"/>
+        <Field id="failurePer" desc="失败率" required="false" edittype="textbox"  datatype="string" method="None" readonly="false" size="256" align="center" status="F" default="false" xpath="/failurePer" />
+        <Field id="timeOutNum" desc="超时量" required="false" edittype="textbox" datatype="string" method="None" readonly="false" align="center" size="256" status="F" default="0" xpath="/timeOutNum" />
+
+		<!-- 查询条件 -->
+		<Field id="queryDimension" desc="查询维度" required="false" edittype="checkboxs" cols="2" datasource="LIST:respSys,银行;tranCode,交易类型" readonly="false" status="F" />
+
+		<Field id="tradeTimeStart" desc="交易开始时间" edittype="datetimebox" xpath="" datatype="timestamp" default="" readonly="false" status="F" />
+        <Field id="tradeTimeEnd" desc="交易结束时间" edittype="datetimebox" xpath="" datatype="timestamp" default="" readonly="false" status="F" />
+	</Fields>
+</Data>

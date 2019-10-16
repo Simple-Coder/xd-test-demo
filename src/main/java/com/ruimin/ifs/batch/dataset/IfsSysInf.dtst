@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+	<Define desc="系统信息" type="call" pagesize="15" log="false" flowid="com.ruimin.ifs.batch.comp.BatchMonitorAction:getIfsSysInf" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="bhdate" desc="批量日期" edittype="datalabel" datatype="date"  xpath="/bhdate" />
+		<Field id="tbsdy" desc="下一批量日期" edittype="datalabel" datatype="date"  xpath="/tbsdy" />
+		<Field id="status" desc="系统状态" edittype="datalabel" datasource="LIST:0,联机状态;1,批量状态" xpath="/status" />
+		<Field id="miscflgs" desc="运行方式" edittype="datalabel" datasource="LIST:1,自动运行;0,手工运行" xpath="/miscflgs"/>
+		<Field id="switchDayTm" desc="日切时间" edittype="datalabel" datatype="string" xpath="/switchDayTm"/>
+		<Field id="startOnlineTm" desc="联机时间" edittype="datalabel" datatype="string" xpath="/startOnlineTm"/>
+		<Field id="refTime" desc="刷新时间" edittype="radioboxs" datasource="LIST:0,不刷新;10,10秒;30,30秒;60,1分钟;300,5分钟" width="300" cols="5"/>
+	</Fields>
+	<Commands>
+		<Command id="startOnline" desc="启动联机" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchMonitorAction:startOnline" url="#" txn="" icon="fa fa-send" />
+		<Command id="switchDay" desc="启动日切" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchMonitorAction:switchDay" url="#" txn="" icon="fa fa-send" />
+	</Commands>
+</Data>

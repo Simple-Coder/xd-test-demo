@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+
+	<Define type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.example.comp.KindEditerDemoAction:getKindBean" desc="富文本编辑器" expmaxrcd="50" flowctxid="" flowretid="" />
+
+	<Fields>
+		<Field id="f1" desc="大文本域1" edittype="textarea" xpath="/f1" rows="2" width="400" />
+		<Field id="f2" desc="大文本域2" edittype="textarea" xpath="/f2" rows="2" width="400" />
+		<Field id="f3" desc="大文本域3" edittype="textarea" xpath="/f3" rows="2" width="400" />
+		<Field id="f4" desc="大文本域4" edittype="textarea" xpath="/f4" rows="2" width="400" />
+	</Fields>
+	<Commands>
+		<Command id="btSave" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.example.comp.KindEditerDemoAction:submitKindBean" icon="fa fa-save" url="#" txn="" />
+	</Commands>
+</Data>

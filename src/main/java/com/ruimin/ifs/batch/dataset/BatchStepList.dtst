@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+	<Define desc="批量监控" type="call" pagesize="15" log="false" flowid="com.ruimin.ifs.batch.comp.BatchMonitorAction:listBatchMonitor" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="id" desc="主键" xpath="/id"/>
+		<Field id="jobNo" desc="作业号" status="F" datatype="int" size="100" xpath="/jobNo" />
+		<Field id="stepNo" desc="步骤号" status="F" datatype="int" size="100" xpath="/stepNo" />
+		<Field id="subStepNo" desc="子步骤号" status="F" datatype="int" size="100" xpath="/subStepNo" />
+		<Field id="subStepName" desc="步骤名称" status="F" datatype="string" size="100" xpath="/subStepName" />
+		<Field id="stepDispName" desc="作业号-步骤号-子步骤号" status="F" datatype="string" size="100" xpath="/stepDispName" />
+		<Field id="startTime" desc="开始时间" status="F" datatype="timestamp" size="100" xpath="/startTime" />
+		<Field id="endTime" desc="结束时间" status="F" datatype="timestamp" size="100" xpath="/endTime" />
+		<Field id="statusDisp" desc="运行状态" status="F" datatype="string" size="100" xpath="/statusDisp" />
+		<Field id="errorMsg" desc="运行说明" status="F" datatype="string" xpath="/errorMsg" />
+
+		<Field id="batchstatus" desc="当前运行" status="F" datatype="string" size="100" xpath="/batchInfo/statusDisp" />
+		<Field id="batchcurrentstep" desc="当前运行作业" status="F" datatype="string" size="100" xpath="/batchInfo/currentStep/stepDispName" />
+		<Field id="batchsubstepcount" desc="总步骤数" status="F" datatype="int" size="100" xpath="/batchInfo/subStepCount" />
+		<Field id="successstepcount" desc="成功完成步骤数" status="F" datatype="int" size="100" xpath="/batchInfo/successStepCount" />
+		<Field id="failstepcount" desc="失败步骤数" status="F" datatype="int" size="100" xpath="/batchInfo/failStepCount" />
+		<Field id="bhdate" desc="批量日期" status="F" edittype="datebox" datatype="date" size="100" xpath="/batchInfo/bhDate" />
+	</Fields>
+	<Commands>
+	</Commands>
+</Data>

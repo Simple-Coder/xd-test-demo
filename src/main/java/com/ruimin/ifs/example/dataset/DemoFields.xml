@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CommQry title="表单项" navigate="" type="call" interface="false"
+	pagesize="10" async="false" databusid="FIVE" transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.ruimin.ifs.fp.demo.getter.DemoFieldsGetter">
+	<Include id="BankParam" />
+
+ <PageQryExp type="XLS" limit="true" encoding="GBK" url="/trans/qryExp.do" desc="XLS导出" perfetch="10" maxpage="3" directory="F:/upload1"/>
+
+	<Fields>
+		<Field id="id" desc="员工编号" edittype=""  editable="" xpath="/id" status="F"
+			default="" />
+		<Field id="pid" desc="部门编号" edittype="" xpath="/pid" status="F"
+			default="" />
+		<Field id="managerId" desc="经理编号" edittype="" xpath="/managerId"
+			status="F" default="" />
+		<Field id="name" desc="姓名" edittype="" xpath="/name" status="F"
+			default="" />
+		<Field id="sex" desc="性别" xpath="/sex" edittype="radioboxs" type="radioboxs"
+			datasource="LIST:male,男;female,女;" size="2"/>
+		<Field id="age" desc="年龄" edittype="textbox" datatype="int" xpath="/age"
+			status="F" />
+		<Field id="salary" desc="薪酬" edittype="textbox" datatype="double"
+			xpath="/salary" size="10" scale="2" status="F" />
+		<Field id="birthday" desc="出生日期" edittype="datebox" datatype="date"
+			xpath="/birthday" status="F" />
+		<Field id="workStartTime" desc="工作开始时间" edittype="datetimebox"
+			datatype="timestamp" xpath="/workStartTime" status="F" />
+		<Field id="workEndTime" desc="工作结束时间" edittype="datetimebox"
+			datatype="timestamp" xpath="/workEndTime" status="F" />
+		<Field id="yyyymm" desc="创建年月" placeholder="yyyyMM" edittype="select"
+			xpath="/yyyymm" editable="true" dropdowntype="custom"
+			url="/templets/lib/yyyyMM.jsp" startyear="2005" yearlength="10"
+			require="false" fieldmap="yyyymm=yyyyMM;yyyymmName=yyyyMM" viewField="yyyyMM" />
+	</Fields>
+	
+	<Operations>
+		<Button id="btn1" name="btn1" desc="保存" icon="fa fa-save" type="asysubmit" updateClass="#" url="#" txn="" />
+    	<Button id="btn2" name="btn2" desc="新增" icon="fa fa-plus" type="addrecord" updateClass="#" url="#" txn="" />
+    	<Button id="btn3" name="btn3" desc="删除" icon="fa fa-remove" type="delrecord" updateClass="#" url="#" txn="" />
+	</Operations>
+</CommQry>

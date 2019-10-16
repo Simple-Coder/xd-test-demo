@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="报文日志查询" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.login.comp.HighChartsQueryAction:queryData" expmaxrcd="100" flowctxid="false" flowretid="false" />
+	<Fields>
+		<!-- 查询条件 -->
+		<Field id="tradeStartTime" desc="交易开始日期" edittype="datetimebox" xpath="" datatype="timestamp" default="" readonly="false" status="F" />
+		<Field id="tradeEndTime" desc="交易结束日期" edittype="datetimebox" xpath="" datatype="timestamp" default="" readonly="false" status="F" />
+		<Field id="bankSelect" desc="接入行选择" required="false" edittype="combobox" datatype="string" method="None" readonly="false" size="12" datasource="DDIC:301"  status="F" xpath="/"/>
+	</Fields>
+</Data>

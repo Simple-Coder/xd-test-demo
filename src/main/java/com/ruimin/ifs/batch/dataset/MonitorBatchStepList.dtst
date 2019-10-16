@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+	<Define desc="批量监控" type="call" pagesize="50" log="false" flowid="com.ruimin.ifs.batch.comp.BatchMonitorAction:listBatchStepMonitor" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="id" desc="主键" xpath="/id" />
+		<Field id="jobNo" desc="作业号" status="F" datatype="int" xpath="/jobNo" />
+		<Field id="stepNo" desc="步骤号" status="F" datatype="int" xpath="/stepNo" />
+		<Field id="subStepNo" desc="子步骤号" status="F" datatype="int" xpath="/subStepNo" />
+		<Field id="subStepName" desc="步骤名称" status="F" datatype="string" xpath="/subStepName" />
+		<Field id="stepDispName" desc="作业号-步骤号-子步骤号" status="F" datatype="string" xpath="/stepDispName" />
+		<Field id="startTime" desc="开始时间" status="F" datatype="timestamp" xpath="/startTime" />
+		<Field id="endTime" desc="结束时间" status="F" datatype="timestamp" xpath="/endTime" />
+		<Field id="statusCode" desc="运行状态" status="F" datatype="string" xpath="/statusCode" />
+		<Field id="suspendCode" desc="出错忽略" edittype="combobox" datasource="DDIC:100" status="F" datatype="string" xpath="/suspendCode" />
+		<Field id="subFlag" desc="并行运行" edittype="combobox" datasource="DDIC:100" status="F" datatype="string" xpath="/subFlag" />
+		<Field id="errorMsg" desc="运行信息" status="F" datatype="string" xpath="/errorMsg" />
+		<Field id="opr" desc="操作" xpath="/id"></Field>
+	</Fields>
+	<Commands>
+		<Command id="btnSingle" desc="单步执行" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchMonitorAction:runSingleStepJob" url="#" txn="" icon="fa fa-send" />
+	</Commands>
+</Data>

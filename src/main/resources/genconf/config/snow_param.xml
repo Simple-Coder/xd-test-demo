@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<params>
+	<!-- 系统参数调整 -->
+	<sysparams>
+	    <!-- 值为DEBUG，表示throwWarnException类异常，只在服务异常级别为TRACE、DEBUG才会输出异常堆栈，其他级别输出WARN -->
+	    <param key="exceptionWarn" value="DEBUG" desc="异常类型为Warn日志输出级别，默认为DEBUG"></param>
+	</sysparams>
+	<!-- 业务自定义参数 -->
+	<bizparams>
+		<param key="testbizparam" value="testbizparam" desc="测试参数"></param>
+	</bizparams>
+</params>

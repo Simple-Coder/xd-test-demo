@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="岗位管理 - 人员信息" expmaxrcd="100" flowctxid="" flowid="com.ruimin.ifs.mng.comp.RoleMngEntryAction:queryStaffRoleRef" flowretid="" log="false" pagesize="10" type="call"/>
+	<Fields>
+		<!-- 岗位 人员信息-->
+		<Field id="tlrno" desc="操作人员编号" status="F" edittype="textbox" datatype="string" method="None" size="8" default="" xpath="/tlrno" />
+		<Field id="tlrName" desc="操作人员名称" status="F" readonly="true" required="true" edittype="textbox" datatype="string" method="None" size="30" default="" xpath="/tlrName" />
+		<Field id="flag" desc="有效状态" status="F" readonly="true" datasource="LIST:1,有效;0,无效" required="true" edittype="combobox" method="None" datatype="string" size="20" xpath="/flag" default="" />
+		<Field id="lastaccesstm" desc="上次登录时间" status="F" edittype="textbox" datatype="date" method="None" size="8" default="" xpath="/lastaccesstm" />
+	</Fields>
+</Data>

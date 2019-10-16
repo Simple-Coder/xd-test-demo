@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="表单项" navigate="" type="call" interface="false" pagesize="10" async="false" databusid="FIVE" transdataactionurl="/trans/TransDataAction.do" getterclassname="com.ruimin.ifs.fp.demo.getter.GroupFieldsGetter">
+	<Include id="BankParam" />
+
+	<Fields>
+		<Field id="requireField" desc="必填项，但只读不验证" edidtype="textbox" required="true" readonly="true" />
+		<Field id="mail" desc="Email" edidtype="textbox" rule="isEmail" errmsg="请输入合法的邮箱格式" size="50" />
+		<Field id="number" desc="整数" edidtype="numberbox" rule="isNum" errmsg="请输入整数" size="8" />
+		<Field id="url" desc="URL地址" edidtype="textbox" rule="isURL" errmsg="请输入正确的URL地址" size="80" />
+		<Field id="chinese" desc="中文" edidtype="textbox" rule="isChinese" errmsg="请输入中文" size="10" />
+		<Field id="maxNumber" desc="最大整数100" edidtype="numberbox" rule="max|100" datatype="number" errmsg="请输入100以内的数字" size="" />
+		<Field id="password" desc="密码" edidtype="textbox" rule="isPassWord" errmsg="请输入由大小写字母、数字、@符号或下划线构成的密码" size="8" />
+		<Field id="numOrWord" desc="数字或字母" edidtype="textbox" rule="isNumOrWord" errmsg="请输入数字或字母" size="20" />
+		<Field id="currency" desc="货币型（长度验证）" edittype="numberbox" datatype="currency" prefix="$" size="10" scale="2" xpath="/col4" status="F" default="" />
+		<Field id="bmail" desc="Email" edidtype="textbox" size="50" />
+		<Field id="bnumber" desc="整数" edidtype="textbox" size="8" />
+		<Field id="burl" desc="URL地址" edidtype="textbox" size="80" />
+		<Field id="textarea" desc="文本域（最长10）" edittype="textarea" size="10" />
+		<Field id="multiValidate" desc="组合验证(必填+数字或字母)" edidtype="textbox" rule="isNumOrWord" required="true" errmsg="请输入数字或字母" size="20" />
+	</Fields>
+	<Operations>
+		<Button id="btSave" name="btSave" desc="验证" type="asysubmit" updateClass="com.ruimin.ifs.fp.demo.updater.ValidateUpdate" url="#" txn="" />
+	</Operations>
+</CommQry>

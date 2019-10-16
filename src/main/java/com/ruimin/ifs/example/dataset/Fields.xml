@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="表单项" navigate="" type="call" interface="false" pagesize="10" async="false" databusid="FIVE" transdataactionurl="/trans/TransDataAction.do" getterclassname="com.ruimin.ifs.fp.demo.getter.GroupFieldsGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<Field id="select" desc="复选框" edittype="checkbox" datatype="boolean" xpath="" default="" readonly="false" />
+		<Field id="select2" desc="复选框(多个)" xpath="" edittype="checkboxs" cols="2"  datasource="LIST:male,男;female,女" readonly="false" />
+
+		<Field id="r1" desc="单选框" edittype="radiobox" datatype="boolean" xpath="" default="" readonly="false" />
+		<Field id="r2" desc="单选框(多个)" xpath="" edittype="radioboxs" cols="2"  datasource="LIST:male,男;female,女" readonly="false" />
+
+		<Field id="f1" desc="普通文本" edittype="datalabel" xpath="" default="default" readonly="false" />
+		<Field id="f2" desc="文本框" edittype="textbox" xpath="" default="default" size="10" require="true" readonly="false" />
+		<Field id="f3" desc="大文本域" edittype="textarea" xpath="" default="default" rows="4" readonly="false" />
+
+
+		<Field id="n1" desc="整型数字框" edittype="numberbox" datatype="number" xpath="" default="2" readonly="false" />
+		<Field id="n2" desc="浮点数字框" edittype="numberbox" datatype="number" scale="2" xpath="" default="2.229" readonly="false" />
+		<Field id="n3" desc="货币框" edittype="numberbox" datatype="currency" xpath="" scale="2" default="2.228" readonly="false" />
+
+		<Field id="s1" desc="静态下拉框-LIST(单选)" xpath="" multiple="false" placeholder="占位符" edittype="combobox" default="female" datasource="LIST:male,男;female,女" readonly="false" />
+		<Field id="s2" desc="静态下拉框-LIST(多选)" require="true" placeholder="占位符" edittype="combobox" datasource="LIST:0,10;1,20;2,30;3,40;" multiple="true" datatype="string" xpath="" default="0,1" readonly="false" />
+		<Field id="s4" desc="静态下拉框-DDIC(单选)" multiple="false" placeholder="占位符" edittype="combobox" datasource="DDIC:37" datatype="string" size="10" readonly="false" />
+		<Field id="s5" desc="静态下拉框-DIC(多选)" multiple="true" require="true" placeholder="占位符" edittype="combobox" datasource="DDIC:37" datatype="string" size="10" readonly="false" />
+
+		<Field id="c1" desc="动态下拉表格(单选)" status="N" fieldname="dataNo" placeholder="占位符" edittype="combogrid" datatype="string" datasource="CQDemo:CQDemo" searchfield="brcode" viewField="brcode,brname" init="true" multiple="false" default="2"
+			fieldmap="c1=brcode;c1Name=brname" size="20" primary="false" readonly="false" />
+		<Field id="c1Name" desc="动态下拉表格(单选)Name" default="睿民科技2" readonly="false" />
+
+		<Field id="c2" desc="动态下拉表格(多选)" status="N" multiple="true" fieldname="dataNo" placeholder="占位符" edittype="combogrid" dropdowntype="dynamic" dataType="String" searchfield="" datasource="CQDemo:CQDemo" viewField="brname" init="true"
+			fieldmap="c2=brcode;c2Name=brname" size="20" primary="false" default="0,2" readonly="false" />
+		<Field id="c2Name" desc="动态下拉表格(多选)Name" default="睿民科技0,睿民科技2" readonly="false" />
+
+		<Field id="c3" desc="动态下拉树(单选)" status="N" multiple="false" datasource="FunctionTree:FunctionTree" placeholder="占位符" method="" fieldmap="c3=funcid;c3Name=funcname" viewField="funcname" edittype="combotree" primary="true" init="false" default="100001"
+			readonly="false" />
+		<Field id="c3Name" desc="动态下拉树(单选)Name" default="机构管理" readonly="false" />
+		<Field id="c4" desc="动态下拉树(多选)" status="N" multiple="true" editable="" datasource="FunctionTree:FunctionTree" placeholder="占位符" method="" fieldmap="c4=funcid;c4Name=funcname" viewField="funcname" edittype="combotree" primary="true" init="false"
+			default="100001" readonly="false" />
+		<Field id="c4Name" desc="动态下拉树(多选)Name" default="机构管理" readonly="false" />
+
+		<Field id="c5" desc="弹出选择" status="N" multiple="true" editable="" datasource="" placeholder="占位符" method="" fieldmap="c5=col1;c5Name=col2" viewField="funcname" edittype="combodialog" url="/demo/jsp/datagrid_default.jsp" primary="true" init="false"
+			default="" readonly="false" />
+		<Field id="c5Name" desc="弹出选择Name" default="" readonly="false" />
+
+
+		<Field id="d1" desc="日期框" edittype="datebox" xpath="/dateStringSelect" datatype="date" default="2012-12-12" readonly="false" />
+		<Field id="d2" desc="日期时间框" edittype="datetimebox" xpath="" datatype="timestamp" default="2012-12-12 12:12:21" readonly="false" />
+	</Fields>
+	<Operations>
+		<Button id="btSave" name="btSave" desc="保存" operation="asysubmit" updateClass="href" icon="save" url="#" txn="" />
+	</Operations>
+</CommQry>

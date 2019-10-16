@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://sqlmap.rql.org/rql-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://sqlmap.rql.org/rql-mapper http://sqlmap.rql.org/rql-mapper">
+	<select id="quartzJob" paramType="map" resultType="com.ruimin.ifs.framework.quartz.bean.IfsCronJob">
+		select * from IFS_CRON_JOB where JOBNO=#{jobno} for update
+	</select>
+	
+	<select id="getJobLogByExecTm" paramType="map" resultType="int">
+		select ID from IFS_CRON_JOB_LOG where JOBNO=#{jobno} and EXCUTE_TIME between #{startTm} and #{endTm}
+	</select>
+	
+	<select id="getCronJobByNo" paramType="int" resultType="com.ruimin.ifs.framework.quartz.bean.IfsCronJob">
+		select * from IFS_CRON_JOB where JOBNO=#{jobno}
+	</select>
+	
+</mapper> 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://sqlmap.rql.org/rql-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://sqlmap.rql.org/rql-mapper http://sqlmap.rql.org/rql-mapper">
+
+	<!-- 银行接口模糊查询 -->
+	<select id="queryBankInterList" paramType="map" resultType="com.ruimin.ifs.po.TblBeBankInter">
+        <![CDATA[select
+            uuid,bank_code,inter_name,inter_code,open_time,request_template,close_time,create_time,last_update_user,last_update_time
+            from tbl_be_bank_inter
+            where 1=1]]>
+        <if test = "qBankCode != ''"><![CDATA[and bank_code = #{qBankCode} ]]></if>
+        <if test = "qInterCode != ''"><![CDATA[and inter_code = #{qInterCode} ]]></if>
+        <if test = "qOpenTime != ''"><![CDATA[and open_time = #{qOpenTime} ]]></if>
+        <if test = "qCloseTime != ''"><![CDATA[and close_time = #{qCloseTime} ]]></if>
+        <![CDATA[order by bank_code]]>
+    </select>
+
+    <!-- 根据银行代码和接口功能码查询银行接口是否存在 -->
+    <select id="queryBankInterIsExist" paramType="map" resultType="int">
+        <![CDATA[select
+            count(1)
+            from tbl_be_bank_inter
+            where 1=1 ]]>
+        <if test = "bankCode != ''"><![CDATA[and bank_code = #{bankCode} ]]></if>
+        <if test = "interCode != ''"><![CDATA[and inter_code = #{interCode} ]]></if>
+    </select>
+</mapper>

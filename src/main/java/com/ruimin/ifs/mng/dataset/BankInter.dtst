@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="银行接口" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.mng.comp.BankInterAction:queryBankInter" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+	    <!-- 显示字段 -->
+        <Field id="uuid" desc="主键ID" status="F" edittype="textbox" datatype="string" size="32" xpath="/uuid" />
+        <Field id="bankCode" desc="银行名称" align="center" status="F" edittype="combogrid" datatype="string" required="true"
+            datasource="BankDropDownList:com.ruimin.ifs.mng.dataset.BankDropDownList"
+            viewfield="bankName" fieldmap="bankCode=bankCode;bankCodeName=bankName"
+            readonly="false" multiple="false"  init="true" xpath="/bankCode"/>
+		<Field id="bankCodeName" desc="银行名称" align="center" status="F" edittype="textbox" datatype="string" method="com.ruimin.ifs.mng.comp.BankInformationAction.getBankName" xpath="/bankCode"/>
+		<Field id="interCode" desc="银行交易码" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/interCode" />
+		<Field id="interName" desc="接口名称" align="center" status="F" required="true" edittype="textbox" datatype="string" size="20" xpath="/interName" />
+		<Field id="requestTemplate" desc="请求摸板" align="center" status="F" required="true" edittype="textarea" datatype="string" rows="25" cols="20"  size="32000" xpath="/requestTemplate" />
+		<Field id="openTime" desc="接口开放时间" rule="isNum" errmsg="请输入时分秒hhmmss" align="center" status="F" required="true" edittype="textbox" datatype="string" size="6" xpath="/openTime" />
+		<Field id="closeTime" desc="接口关闭时间" rule="isNum" errmsg="请输入时分秒hhmmss" align="center" status="F" required="true" edittype="textbox" datatype="string" size="6" xpath="/closeTime" />
+        <Field id="createTime" desc="创建时间" align="center" status="F" edittype="textbox" datatype="string" size="20" xpath="/createTime" />
+        <Field id="lastUpdateUser" desc="编辑人" align="center" status="F" edittype="textbox" datatype="string" size="20" xpath="/lastUpdateUser" />
+        <Field id="lastUpdateTime" desc="编辑时间" align="center" status="F" edittype="textbox" datatype="string" size="20" xpath="/lastUpdateTime" />
+		<Field id="opr" desc="操作" align="center" edittype="textbox" datatype="string" xpath="" />
+
+		<!-- 查询条件 -->
+        <Field id="qBankCode" desc="银行名称" edittype="combogrid"
+            datasource="BankDropDownList:com.ruimin.ifs.mng.dataset.BankDropDownList"
+            viewfield="bankName" fieldmap="qBankCode=bankCode;qBankCodeName=bankName"
+            readonly="false" multiple="false" init="true"/>
+        <Field id="qInterCode" desc="银行交易码" edittype="textbox" datatype="string" xpath="" status="F" default="" />
+        <Field id="qOpenTime" desc="接口开放时间" edittype="textbox" datatype="string" xpath="" status="F" default="" />
+        <Field id="qCloseTime" desc="接口关闭时间" edittype="textbox" datatype="string" xpath="" status="F" default="" />
+        </Fields>
+	<Commands>
+		<Command id="btnAdd" desc="新增" type="addrecord" url="#" txn="" icon="fa fa-plus"/>
+        <Command id="btnSaveAdd" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BankInterAction:insertBankInter" url="#" txn=""/>
+        <Command id="btnSaveUpdate" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BankInterAction:updateBankInter" url="#" txn=""/>
+        <Command id="btnDelete" desc="删除" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BankInterAction:deleteBankInter" url="#" txn=""/>
+	</Commands>
+</Data>

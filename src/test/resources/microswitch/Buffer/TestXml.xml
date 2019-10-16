@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- name为xml tag，默认一致 ,declare是否显示声明，默认为true-->
+<Buffer id="TestXml" name="TestXml" desc="卡片参与请求消息请求">
+	<Attr id="testAttr"  desc="测试属性" name="testAttr"   xpath="/testAttr"/>
+	<!-- %s:A字符串格式化 -->
+	<Attr id="xtype"  desc="测试属性" name="xtype"   xpath="/xtype" format="%s:A"/>
+	<!-- %+d数字格式化 -->
+	<Attr id="number"  desc="测试数值格式化" name="number"   xpath="/numberFmtTest" format="%+d"/>
+	<Field id="version"  desc="消息版本号" name="version"  xpath="/version">
+		<Attr id="testAttr-1"  desc="消息版本号" name="vertest"   xpath="/version" />
+		<Attr id="testAttr-2"  desc="消息版本号" name="testAttr-2"   xpath="/version" />
+	</Field>
+	<Field id="xtype"  desc="交易类型" name="xtype"  xpath="">
+		<Attr id="xtype"  desc="交易类型" name="xtype"   xpath="/xtype" />
+	</Field>
+	<Field id="xclass"  desc="交易类别" name="xclass"  xpath="/xclass" require="false" maxlen="1" range="com.ruimin.ifs.microswitch.test.process.TestCustRangeProc.getTestRangeList" rule="[0-9]"/>
+	<Field id="pan"  desc="卡号" name="pan" xpath="/pan" />
+	<!-- format 支持数值（BigDecimal、Double、Float）、日期（Date、Timestamp、Calendar) 进行格式化 -->
+	<Field id="xdate"  desc="交易日期" name="xdate" xpath="/xdate" format="yyyy-MM-dd"/>
+	<!-- buffer的xpath为类路径，用于报文转为javabean ,如果只进行格式化，可以不填写-->
+	<Buffer id="Merchant" desc="商户信息" name="Merchant" xpath="com.ruimin.ifs.microswitch.test.bean.Merchant">
+		<Attr id="testAttr-b"  desc="消息版本号" name="testAttr-b"   xpath="/pan" />
+		<Field id="acqBIN"  desc="acqBIN" name="acqBIN"   xpath="/merchant/acqBIN" />
+		<Field id="merID"  desc="merID" name="merID"   xpath="/merchant/merID" />
+		<Field id="password"  desc="password" name="password"  xpath="/merchant/password" />
+		<Field id="name"  desc="name" name="name"  xpath="/merchant/name" />
+		<Field id="country"  desc="country" name="country"  xpath="/merchant/country" />
+	</Buffer>
+	<Array id="array" desc="数组List" name="array" xpath="/array">
+		<!-- type 枚举说明 LBS:左补空 RBS:右补空  LZS:左补0 LBS:右补零，配合length属性使用，默认不使用 -->
+		<Attr id="testAttr-a"  desc="消息版本号" name="testAttr-a" length="11" type="LZS"  xpath="/merchant/merID" />
+		<!-- buffer的xpath为类路径，用于报文转为javabean ,如果只进行格式化，可以不填写-->
+		<Buffer id="Purchase" desc="交易信息" name="Purchase" xpath="com.ruimin.ifs.microswitch.test.bean.Purchase">
+			<Attr id="testAttr-ab"  desc="消息版本号" name="testAttr-ab"   xpath="/exponent" />
+			<Field id="purchAmount"  desc="交易金额" name="purchAmount"  xpath="/purchAmount" format="###,###.00" />
+			<Field id="currency"  desc="交易币种" name="currency" xpath="/currency" />
+			<Field id="exponent"  desc="货币指数" name="exponent"  xpath="/exponent" />
+			<!-- default值为空使用,默认值不支持format -->
+			<Field id="trsFeeAmount"  desc="交易手续费" name="trsFeeAmount" xpath="trsFeeAmount" format="######.00" default="1.00"/>
+		</Buffer>
+	</Array>
+</Buffer>

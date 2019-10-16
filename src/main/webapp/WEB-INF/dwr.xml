@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN" "http://getahead.org/dwr//dwr30.dtd">
+<dwr>
+
+	<allow>
+		<!-- dwr查询请求 -->
+		<create creator="new" javascript="CommonQueryResultProcess">
+			<param name="class" value="com.ruimin.ifs.framework.process.BankResultProcess" />
+			<include method="processAsyncBean" />
+		</create>
+
+		<!-- dwr更新请求 -->
+		<create creator="new" javascript="CommonQueryUpdateProcess">
+			<param name="class" value="com.ruimin.ifs.framework.process.BankUpdateProcess" />
+			<include method="savaOrUpdate" />
+		</create>
+
+		<create creator="new" javascript="SessionTicketProcess">
+			<param name="class" value="com.ruimin.ifs.framework.databus.SessionTicketProcess" />
+			<include method="setAciveTicket" />
+			<include method="clearTcket" />
+		</create>
+
+		<create creator="new" javascript="DwrFunctions">
+			<param name="class" value="com.ruimin.ifs.framework.dwr.DwrFunctions" />
+			<include method="setCurrentTabFuncId" />
+		</create>
+
+		<!-- 自定义dwr注册 -->
+		<create creator="new" javascript="HighChartsService">
+			<param name="class" value="com.ruimin.ifs.dwr.HighChartsService" />
+			<include method="getDatas" />
+			<include method="getSweepDatas" />
+		</create>
+		<!-- bean注册 -->
+		<convert match="com.ruimin.ifs.dwr.HighChartsRequestBean" converter="bean" />
+		<convert match="com.ruimin.ifs.dwr.HighChartsResponseBean" converter="bean" />
+		<convert match="com.ruimin.ifs.dwr.SweepMonitorRequestBean" converter="bean" />
+		<convert match="com.ruimin.ifs.dwr.SweepMonitorResponseBean" converter="bean" />
+
+		<!-- 批量 -->
+		<create creator="new" javascript="DwrBatchService">
+			<param name="class" value="com.ruimin.ifs.batch.process.DwrBatchService" />
+			<include method="getSystemType" />
+		</create>
+		
+		<convert match="map" converter="java.util.Map" />
+		<convert match="com.ruimin.ifs.framework.dwr.bean.QueryResultBean" javascript="QueryResultBean" converter="bean" />
+		<convert match="com.ruimin.ifs.core.exception.SnowException" converter="bean" />
+		<convert match="com.ruimin.ifs.framework.dwr.bean.DataSetResultBean" converter="bean" />
+		<convert match="com.ruimin.ifs.framework.dwr.bean.ResultBean" converter="bean" />
+		<convert match="com.ruimin.ifs.framework.dwr.bean.MultiUpdateRequestBean" converter="bean" />
+
+		<convert match="com.ruimin.ifs.framework.dataobject.UpdateRequestBean" converter="bean"></convert>
+		<convert match="com.ruimin.ifs.framework.dwr.bean.UpdateResultBean" converter="bean" />
+		<convert match="com.ruimin.ifs.framework.dwr.bean.DwrFileBean" converter="bean" />
+
+	</allow>
+
+	<signatures>
+		<![CDATA[
+		import java.util.List;
+		import java.util.Map;
+		import com.ruimin.ifs.framework.dwr.bean.QueryResultBean;
+		import com.ruimin.ifs.framework.dwr.bean.DataSetResultBean;
+		import com.ruimin.ifs.framework.dwr.bean.MultiUpdateRequestBean;
+		import com.ruimin.ifs.framework.dwr.bean.UpdateResultBean;
+		import com.ruimin.ifs.framework.process.BankResultProcess;
+		import com.ruimin.ifs.framework.process.BankUpdateProcess;
+		import com.ruimin.ifs.framework.dataobject.UpdateRequestBean;
+		BankResultProcess.processAsyncBean(Map<String,String> map,HttpServletRequest request,HttpServletResponse response);
+		BankUpdateProcess.savaOrUpdate(MultiUpdateResultBean bean,HttpServletRequest request,HttpServletResponse response);
+		MultiUpdateRequestBean.setUpdateResult(Map<String,UpdateResultBean> map);
+		MultiUpdateRequestBean.setParamMap(Map<String,String> map);
+		UpdateResultBean.setReturnParam(Map<String,String> map);
+		]]>
+	</signatures>
+
+</dwr>

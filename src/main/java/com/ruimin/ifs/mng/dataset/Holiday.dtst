@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+	<Define desc="节假日维护" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.mng.comp.HolidayAction:listHoliday" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="id" desc="主键" datatype="string" xpath="/id" />
+		<Field id="year" desc="年份" required="false" edittype="numberbox" datatype="int" size="4" xpath="/year" />
+	   	<Field id="sunWorkDay" desc="总工作日" datatype="int" xpath="/sunWorkDay" />
+	   	<Field id="sunHoliDay" desc="总休假日" datatype="int" xpath="/sunHoliDay" />
+	</Fields>
+	<Commands>
+		<Command id="btnAdd" desc="新增" type="addrecord" url="#" txn="" icon="fa fa-plus"/>
+		<Command id="btnDetail" desc="详细" type="none" url="#"  txn="detailHoliday" icon="fa fa-list"/>
+		<Command id="btnUpdate" desc="修改" type="none" url="#"  txn="detailHoliday" icon="fa fa-pencil"/>
+		<Command id="btAddOk" desc="确定" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.HolidayAction:getTblCalInfByYear" url="#" txn="addHoliday" icon="fa fa-plus"/>
+	</Commands>
+</Data>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- name与id默认一致 ,deftype为默认字符串补充重读类型,不设置为LBS -->
+<!-- type 枚举说明 LBS:左补空 RBS:右补空 LZS:左补0 LBS:右补零，配合length属性使用，默认为LBS -->
+<!-- format 支持数值（BigDecimal、Double、Float）、日期（Date、Timestamp、Calendar) 进行格式化 -->
+<Buffer id="TestFixString" name="TestFixString" desc="卡片参与请求消息请求" deftype="LBS">
+	<Field id="version" desc="消息版本号" name="version" xpath="/version" length="5" require="true"></Field>
+	<Field id="xtype" desc="交易类型" name="xtype" xpath="/xtype" length="2"></Field>
+	<Field id="testAttr" desc="测试" name="testAttr" xpath="/testAttr" length="20"></Field>
+	<Field id="xclass" desc="交易类别" name="xclass" xpath="/xclass" length="1" require="true" range="com.ruimin.ifs.microswitch.test.process.TestCustRangeProc.getTestRangeList" rule="[0-9]" />
+	<Field id="pan" desc="卡号" name="pan" xpath="/pan" length="24" type="LZS" />
+	<Field id="xdate" desc="交易日期" name="xdate" xpath="/xdate" format="yyyy-MM-dd" length="10" />
+	<!-- buffer的xpath为类路径，用于报文转为javabean ,如果只进行格式化，可以不填写 -->
+	<Buffer id="Merchant" desc="商户信息" name="Merchant" xpath="com.ruimin.ifs.microswitch.test.bean.Merchant">
+		<Field id="acqBIN" desc="acqBIN" name="acqBIN" xpath="/merchant/acqBIN" length="2" />
+		<Field id="merID" desc="merID" name="merID" xpath="/merchant/merID" length="10" />
+		<Field id="password" desc="password" name="password" xpath="/merchant/password" length="8" />
+		<Field id="name" desc="name" name="name" xpath="/merchant/name" length="20" />
+		<Field id="country" desc="country" name="country" xpath="/merchant/country" length="20" />
+	</Buffer>
+	<Array id="array" desc="数组List" name="array" xpath="/array">
+		<!-- buffer的xpath为类路径，用于报文转为javabean ,如果只进行格式化，可以不填写 -->
+		<Buffer id="Purchase" desc="交易信息" name="Purchase" xpath="com.ruimin.ifs.microswitch.test.bean.Purchase">
+			<Field id="purchAmount" desc="交易金额" name="purchAmount" xpath="/purchAmount" format="###,###.00" length="18" />
+			<Field id="currency" desc="交易币种" name="currency" xpath="/currency" length="3" />
+			<Field id="exponent" desc="货币指数" name="exponent" xpath="/exponent" length="2" />
+			<!-- default值为空使用,默认值不支持format -->
+			<Field id="trsFeeAmount" desc="交易手续费" name="trsFeeAmount" xpath="trsFeeAmount" format="######.00" default="1.00" length="18" />
+		</Buffer>
+	</Array>
+</Buffer>

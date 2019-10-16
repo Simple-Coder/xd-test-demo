@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Buffer id="Error" name="Error" desc="错误消息" >
+	<Field id="rspcode" desc="应答码" name="rspcode" xpath="/rspcode" />
+	<Field id="rspmsg" desc="应答消息" name="rspmsg" xpath="/rspmsg" />
+</Buffer>

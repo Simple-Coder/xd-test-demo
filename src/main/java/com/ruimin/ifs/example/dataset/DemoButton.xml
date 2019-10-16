@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="表单项" navigate="" type="call" interface="false"
+	pagesize="10" async="false" databusid="FIVE" transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.ruimin.ifs.fp.demo.getter.GroupFieldsGetter">
+	<Include id="BankParam" />
+    <Fields>
+    </Fields>
+	<Operations>
+		<Button id="btn1" name="btn1" desc="按钮xxxxxx-图标" icon="fa fa-user" operation="" />
+		<Button id="btn2" name="btn2" desc="按钮-无图标" icon="" operation="" />
+		<Button id="btn3" name="btn3" desc="按钮-plain" icon="" operation="" />
+		<Button id="btn4" name="btn3" desc="" icon="fa fa-user" operation="" />
+	</Operations>
+</CommQry>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+	<Define desc="定时任务参数" type="call" pagesize="10" log="false"
+		flowid="com.ruimin.ifs.mng.comp.BopTimedSchedulerManageAction:queryJobParamById"
+		expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="paramKey" desc="参数Key" edittype="textbox"
+			required="true" datatype="string" xpath="/paramKey" readonly="false"/>
+		<Field id="paramValue" desc="参数值" edittype="textbox"
+			required="false" datatype="string" xpath="/paramValue" readonly="false"/>
+	</Fields>
+	<Commands>
+	<Command id="btnParamAdd" desc="新增" type="addrecord" url="" txn="" icon="fa fa-plus"/>
+	<Command id="btnParamDel" desc="删除" type="delrecord" url="" txn="" icon="fa fa-remove" />
+	</Commands>
+</Data>
+

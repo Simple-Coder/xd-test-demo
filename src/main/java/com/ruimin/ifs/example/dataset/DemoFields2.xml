@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="表单项" navigate="" type="call" interface="false"
+	pagesize="10" async="false" databusid="FIVE" transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.ruimin.ifs.fp.demo.getter.GroupFieldsGetter">
+	<Include id="BankParam" />
+	<PageQryExp type="XLS" limit="true" encoding="GBK"
+		url="/trans/qryExp.do" desc="XLS导出" perfetch="10" maxpage="3"
+		directory="F:/upload1" />
+	<Fields>
+		<Field id="select" desc="sel" edittype="checkbox" xpath="" />
+		<Field id="t1" desc="普通文本" edittype="datalabel" type="datalabel" xpath="/text" />
+		<Field id="t2" desc="普通文本框" edittype="textbox" type="textbox" xpath=""  rules="email" errmsg="not email" />
+		<Field id="p1" desc="密码框" edittype="password" xpath="/textInput" />
+		<Field id="t3" desc="普通文本区域" edittype="textarea" type="textarea" xpath="textArea" rows="3"/>
+
+		<Field id="n1" desc="整数输入框" edittype="numberbox" datatype="int" require="true" rules="email" errmsg="not email"
+			xpath="/integerText" />
+		<Field id="n2" desc="浮点输入框" edittype="numberbox" type="numberbox" datatype="double"
+			size="10" scale="3" xpath="/doubleText" />
+		<Field id="n3" desc="货币输入框" edittype="numberbox" datatype="currency"
+			size="20" scale="2" prefix="$" xpath="/currencyText" default="0" />
+
+		<Field id="s1" desc="静态下拉框-LIST(单选)" xpath="/staticCombobox"
+			multiple="false" placeholder="占位符" edittype="combobox" datasource="LIST:male,body 123 13 ;female,girl" />
+		<Field id="s2" desc="静态下拉框-LIST(多选)" require="true"
+			placeholder="占位符" edittype="combobox" datasource="LIST:0,10;1,20;2,30;3,40;"
+			multiple="true" datatype="string" xpath="/check" />
+		<Field id="s3" desc="静态下拉框-LIST(可输入)" xpath="/staticCombobox"
+			multiple="false" placeholder="占位符" editable="true" edittype="combobox"
+			datasource="LIST:male,男;female,女" />
+		<Field id="s4" desc="静态下拉框-Dic(单选)" multiple="false"
+			placeholder="占位符" edittype="combobox" datasource="DATA_DIC.37"
+			datatype="string" size="10" />
+		<Field id="s5" desc="静态下拉框-Dic(多选)" multiple="true" require="true"
+			placeholder="占位符" edittype="combobox" datasource="DATA_DIC.37"
+			datatype="string" size="10" />
+			
+			
+		<Field id="d1" desc="动态下拉框－CQ(单选)" status="N"
+			fieldname="dataNo" placeholder="占位符" edittype="combogrid" dropdowntype="dynamic"
+			dataType="String" readonly="false" datasource="CQ:CQDemo" searchfield="brcode"
+			viewField="brcode,brname" init="true" multiple="false" default="2"
+			fieldmap="d1=brcode;d1Name=brname"
+			size="20" primary="false" type="String" />
+		<Field id="d12" desc="动态下拉框－CQ(单选)" status="N"
+			fieldname="dataNo" placeholder="占位符" edittype="combogrid" dropdowntype="dynamic"
+			dataType="String" readonly="false" datasource="CQ:CQDemo"
+			viewField="brname" init="true" multiple="false" default="2"
+			fieldmap="d1=brcode;d1Name=brname"
+			size="20" primary="false" type="String" />
+		<Field id="d2" desc="动态下拉框－CQ(多选)" status="N"
+			multiple="true" fieldname="dataNo" placeholder="占位符" edittype="combogrid"
+			dropdowntype="dynamic" dataType="String" readonly="false" searchfield=""
+			datasource="CQ:CQDemo" viewField="brname" init="true"
+			fieldmap="d2=brcode;d2Name=brname"
+			size="20" primary="false" type="String" />
+		<Field id="d3" desc="动态下拉框－树(单选)" status="N"
+			multiple="false" datasource="FunctionTree:FunctionTree" placeholder="占位符"
+			method="com.ruimin.ifs.business.common.CQMethod.getDataDicName"
+			fieldmap="d3=funcid;d3Name=funcname"
+			viewField="funcname" edittype="combotree" dropdowntype="dynamictree"
+			primary="true" init="false" size="3" default="2" />
+		<Field id="d4" desc="动态下拉框－树(多选)" status="N"
+			multiple="true" editable="" datasource="CQ:FunctionTree" placeholder="占位符"
+			method="com.ruimin.ifs.business.common.CQMethod.getDataDicName"
+			readonly="false"
+			fieldmap="d4=funcid;d4Name=funcname"
+			viewField="funcname" edittype="combotree" dropdowntype="dynamictree"
+			primary="true" init="false" size="3" default="2" />
+			
+			
+			
+		<Field id="date1" desc="日期选择框-date" edittype="datebox"  rules="email" errmsg="not email"
+			placeholder="yyyy-MM-dd" datatype="date" xpath="/dateSelect" />
+		<Field id="date2" desc="日期选择框-string" edittype="datebox"
+			placeholder="yyyy-MM-dd" datatype="date" xpath="/dateStringSelect" />
+		<Field id="date3" desc="日期选择框-可输入" edittype="datebox"
+			placeholder="yyyy-MM-dd" datatype="date" xpath="/dateSelect"
+			editable="true" />
+		<Field id="date4" desc="日期选择框-指定日期之前" edittype="datebox"
+			datatype="predate" xpath="/preDateSelect" />
+		<Field id="date5" desc="日期选择框-指定日期之后" edittype="datebox"
+			datatype="postdate" xpath="/postDateSelect" />
+		<Field id="date6" desc="年月" placeholder="yyyyMM"
+			edittype="select" editable="true" dropdowntype="custom"
+			url="/templets/lib/yyyyMM.ftl" startyear="2005" yearlength="10"
+			require="false" fieldmap="date6=yyyyMM;date6Name=yyyyMM"
+			viewField="yyyyMM" />
+		<Field id="date7" desc="时间选择框" placeholder="yyyy-MM-dd HH:mm:ss"
+			edittype="datetimebox" datatype="timestamp" xpath="/timestamp" />
+			
+			
+		<Field id="radio" desc="单选框" edittype="radiobox" type="radiobox" datasource="LIST:yes,是;no,否"
+			datatype="string" xpath="/radio" />
+		<Field id="check" desc="复选框" edittype="checkbox" type="checkbox" require="true"
+			datasource="LIST:0,10;1,20;2,30;3,40;" datatype="string" xpath="/check" />
+	
+		<Field id="s1" desc="静态下拉框-LIST(单选)" xpath="/staticCombobox" multiple="false" placeholder="占位符" type="combobox"
+			datasource="LIST:male,body 123 13 ;female,girl" />
+		<Field id="s2" desc="静态下拉框-LIST(多选)" require="true" placeholder="占位符" type="combobox" datasource="LIST:0,10;1,20;2,30;3,40;"
+			multiple="true" datatype="string" xpath="/check" />
+		<Field id="s3" desc="静态下拉框-LIST(可输入)" xpath="/staticCombobox" multiple="false" placeholder="占位符" editable="true" type="combobox"
+			datasource="LIST:male,男;female,女" />
+		<Field id="s4" desc="静态下拉框-Dic(单选)" multiple="false" placeholder="占位符" type="combobox" datasource="DDIC:37" datatype="string" size="10" />
+		<Field id="s5" desc="静态下拉框-Dic(多选)" multiple="true" require="true" placeholder="占位符" type="combobox" datasource="DDIC:37" datatype="string"
+			size="10" />
+	
+	
+		<Field id="d111" desc="弹出选择框" edittype="combodialog" type ="combodialog"
+            fieldmap="dialog=col1;dialogName=col2" url="/demo/jsp/datagrid_default_tab.jsp"
+            datatype="string" />
+	
+	
+	</Fields>
+	<Operations>
+	<Button id="btSave" desc="保存" resultdataset="" icon="save" url="#" txn="" />
+		
+	</Operations>
+</CommQry>

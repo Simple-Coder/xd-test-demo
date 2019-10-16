@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+	<Define desc="批量运行时间" type="call" pagesize="10" log="true" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:getBatchRunTimeByPage" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="paramId" desc="参数主键" xpath="/paramId" />
+		<Field id="magicId" desc="参数标识" xpath="/magicId" />
+		<Field id="jobParamKey" desc="批量任务" required="true" edittype="combogrid" datasource="BatJobSelect:com.ruimin.ifs.batch.dataset.BatJobSelect" init="true"
+			fieldmap="jobParamKey=jobKey;jobParamKeyName=jobName" viewfield="jobKey,jobName" xpath="/jobParamKey" />
+		<Field id="jobParamKeyName" desc="批量任务名称" method="com.ruimin.ifs.batch.comp.BatchProcAction.getJobName" xpath="/jobParamKey" />
+		<Field id="hour" desc="运行时间(小时)" edittype="integerbox" datatype="int" required="true" xpath="/hour" />
+		<Field id="minute" desc="运行时间(分)" edittype="integerbox" datatype="int" required="true" xpath="/minute" />
+		<Field id="runTime" desc="运行时间" xpath="/runTime"/> 
+		<Field id="desc0" desc="设置描述" edittype="textarea" required="true" rows="3" size="30" xpath="/desc0" width="400" />
+		<Field id="opr" desc="操作" xpath="/paramId"/>
+	</Fields>
+	<Commands>
+		<Command id="btnRunTimeAdd" desc="添加" type="addrecord" url="#" txn="" icon="fa fa-plus" />
+		<Command id="btnRunTimeSave" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:saveOrUpdateBatchRunTime" url="#" txn="" icon="fa fa-save" />
+		<Command id="btnRunTimeDelete" desc="删除" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:deleteBatchRunTime" url="#" txn="" icon="fa fa-remove" />
+	</Commands>
+</Data>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="支付监控信息" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.login.comp.PayMonitorAction:queryPayMonitorAction" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+	    <!-- 显示字段 -->
+		<Field id="systemid" desc="支付状态码" align="center" status="F" required="true" edittype="textbox" datatype="string" size="30" xpath="/systemid" />
+		<Field id="itemval" desc="支付状态" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/itemval" />
+		<Field id="icbc" desc="工商银行" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/icbc" />
+		<Field id="ccb" desc="建设银行" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/ccb" />
+		<Field id="other" desc="其他银行" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/other" />
+		<Field id="sum" desc="总值" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/sum" />
+		<Field id="avg" desc="比例" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/avg" />
+		<Field id="sumToday" desc="今日交易量" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/sumToday" />
+		<Field id="sumHistory" desc="历史同期交易量" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/sumHistory" />
+    </Fields>
+	<Commands>
+	</Commands>
+</Data>

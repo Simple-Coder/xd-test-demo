@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+	<Define desc="批量监控" type="call" pagesize="15" log="false" flowid="com.ruimin.ifs.batch.comp.BatchMonitorAction:listBatchMonitorStatus" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="id" desc="主键" xpath="/id"/>
+		<Field id="jobno" desc="作业号" status="F" datatype="int" size="100" xpath="/jobno" />
+		<Field id="step" desc="步骤号" status="F" datatype="int" size="100" xpath="/step" />
+		<Field id="subStep" desc="子步骤号" status="F" datatype="int" size="100" xpath="/subStep" />
+		<Field id="startTime" desc="开始时间" status="F" datatype="timestamp" size="100" xpath="/startTime" />
+		<Field id="endTime" desc="结束时间" status="F" datatype="timestamp" size="100" xpath="/endTime" />
+		<Field id="subFlag" desc="" status="F" datatype="string" size="100" xpath="/subFlag" />
+		<Field id="status" desc="运行状态" status="F" datatype="string" size="100" xpath="/status" />
+		<Field id="misc" desc="批量任务名称" status="F" datatype="string" size="100" xpath="/misc" />
+		<Field id="bhdate" desc="批量日期" status="F" edittype="datebox" datatype="date" size="100" xpath="/bhdate" />
+		<Field id="planExecTm" desc="计划时间" status="F" edittype="datetimebox" datatype="timestamp" size="100" xpath="/planExecTm" />
+	</Fields>
+	<Commands>
+	</Commands>
+</Data>

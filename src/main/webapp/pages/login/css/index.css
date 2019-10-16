@@ -1,0 +1,89 @@
+body {
+	overflow: hidden;
+}
+
+.sidebar {
+	width: 200px;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 100%;
+}
+
+.sidebar.menu-min {
+	overflow: visible;
+}
+
+.sidebar+.main-content {
+	margin-left: 200px;
+}
+
+.main-content-inner {
+	margin-top: 2px;
+}
+
+@media only screen and (max-width: 991px) {
+	.sidebar.responsive {
+		left: 200px;
+		margin-left: -200px;
+	}
+}
+
+.l-dialog-content>div {
+	box-sizing: content-box;
+}
+
+.l-dialog td, .l-dialog tr, .l-dialog td div {
+	box-sizing: content-box;
+}
+.search-menu {
+	position: absolute;
+	z-index: 9999999;
+	background-color: #ededed;
+	border: 1px solid #666;
+	line-height: 28px;
+	display: none;
+}
+
+.search-menu-li {
+	line-height: 28px;
+	cursor: pointer;
+	list-style: none;
+	padding: 1px;
+	padding-left: 8px;
+	border-bottom: 1px solid #ddd
+}
+
+.search-menu-more {
+	color: orange;
+	line-height: 20px;
+	font-size: 10px;
+	list-style: none;
+	padding: 1px;
+	padding-left: 8px;
+}
+
+.search-menu-li.hov {
+	background-color: #438eb9;
+	color: #fff
+}
+
+.idxlogo {
+	border: 0px;
+	height: 32px;
+	width: auto;
+	float: left;
+	padding-left: 10px;
+	padding-top: 6px;
+}
+
+.idxheadertitle {
+	font-family: "Microsoft Yahei", Tahoma, Helvetica, Arial, "SimSun",sans-serif;
+	float: left;
+	height: 36px;
+	line-height: 45px;
+	color: white;
+	font-size: 18px;
+	font-weight: 400;
+	padding-left: 5px;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 数据源配置 -->
+<dataSourceConfs>
+	<dataSource name="defaultDataSource" type="proxool" desc="数据源"
+		default="true" forFM="">
+		<attr key="rqlDialect" value="${ds1.rqlDialect}" />
+		<attr key="driver" value="${ds1.driver}" />
+		<attr key="driverUrl" value="${ds1.url}"/>
+		<attr key="user" value="${ds1.user}" />
+		<attr key="password" value="${ds1.password}" />
+		<attr key="prototypeCount" value="${ds1.prototypeCount}"/>
+		<attr key="maximumConnectionCount" value="${ds1.maximumConnectionCount}" />
+		<attr key="minimumConnectionCount" value="${ds1.minimumConnectionCount}" />
+		<attr key="simultaneousBuildThrottle" value="${ds1.simultaneousBuildThrottle}" />
+		<!-- NULL=不加密;AES=AES;DESEDE=DESEDE;PBEMD5DES=PBEMD5DES;BASE64=BASE64 -->
+		<attr key="encMode" value="${ds1.encMode}" />
+		<!-- 最大活动时间(超过此时间线程将被kill,默认为5分钟)  -->
+		<!-- <attr key="maximumActiveTime" value="300000"></attr> -->
+		<!-- proxool自动侦察各个连接状态的时间间隔(毫秒),侦察到空闲的连接就马上回收,超时的销毁 默认30秒） -->
+		<!-- <attr key="housekeepingsleeptime" value="300000"></attr> -->
+		<!-- 连接最长时间(默认为4个小时)  -->
+		<!-- <attr key="maximumConnectionLifetime" value="14400000"></attr> -->
+		<!-- 测试的SQL执行语句 -->
+		<!-- <attr key="houseKeepingTestSql" value="select 1"></attr> -->
+		<!-- 是否在使用连接之前使用HouseKeepingTestSql测试连接可用 -->
+		<!-- <attr key="testBeforeUse" value="true"></attr> -->
+		<!-- 是否在使用关闭之后回收到连接池使用HouseKeepingTestSql测试连接可用 -->
+		<!-- <attr key="testAfterUse" value="true"></attr> -->
+	</dataSource>
+<!-- 	<dataSource name="defaultDataSource" type="proxool" desc="数据源" default="true" ismonitor="false">
+		<attr key="rqlDialect" value="com.ruimin.ifs.rql.dialect.OracleRqlDialect"></attr>
+		<attr key="driver"  value="oracle.jdbc.driver.OracleDriver"/>
+		<attr key="driverUrl" value="jdbc:oracle:thin:@192.168.23.196:1521:xe"/>
+		<attr key="user" value="hmfp"/>
+		<attr key="password" value="hmfp"/>
+		<attr key="maximumConnectionCount" value="10"/>
+		<attr key="minimumConnectionCount" value="5"/>
+		<attr key="simultaneousBuildThrottle" value="10"/>
+		<attr key="encMode" value="NULL"/>
+	</dataSource> -->
+</dataSourceConfs>

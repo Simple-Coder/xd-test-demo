@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="定时任务配置" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.mng.comp.BopTimedSchedulerManageAction:queryAll" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+	    <Field id="id" desc="任务id" edittype="textbox" datatype="string"  xpath="/id" />
+		<Field id="jobno" desc="任务编号" edittype="integerbox" required="true"
+			datatype="int" xpath="/jobno" />
+		<Field id="transactionFlg" desc="是否开启事务" status="F" required="true" edittype="combobox"
+			datatype="string" datasource="LIST:true,是;false,否" readonly="false" default="true" xpath="/transactionFlg" />
+		
+		<Field id="runtime" desc="执行方式" edittype="combobox"
+			datasource="LIST:90,每日;93,每月初;97,每月某日;98,每月末;9N,不运行;" datatype="string" method="None"
+			 size="15" default="" xpath="/runtime" />
+		<Field id="daysOfMonth" desc="每月某日" edittype="textbox" required="false"
+			datatype="string" method="None" size="6"
+			default="" status="F" xpath="/daysOfMonth" />
+		<Field id="processFunction" desc="执行任务类" edittype="textbox" required="true"
+			datatype="string" size="256" colspan="4" width="400"
+			default="" status="F" xpath="/processFunction" />
+		<Field id="repeatTime" desc="执行间隔(分钟)" edittype="textbox" required="true"
+			datatype="string" method="None" size="10"
+			default="" status="F" xpath="/repeatTime" />
+		<Field id="repeatCnt" desc="日执行次数"  edittype="textbox" required="true"
+			datatype="string" method="None" 
+			size="15" default="" xpath="/repeatCnt" />
+		<Field id="startTime" desc="开始时间"  edittype="textbox" required="true"  errmsg="请输入符合 HH:MM:SS规则的时间"
+			 datatype="string"    xpath="/startTime" />
+		<Field id="endTime" desc="结束时间" edittype="textbox" required="true" errmsg="请输入符合 HH:MM:SS规则的时间"
+			 datatype="string"   xpath="/endTime" />
+		<Field id="desc0" desc="任务描述"  edittype="textarea" rows="2" width="400"  required="true"
+			datatype="string" method="None" size="56"  colspan="4"
+			default="" xpath="/desc0" />	 
+		<Field id="isRunning" desc="任务状态"  edittype="combobox" 
+			datasource="LIST:true,运行中;false,已停止" datatype="boolean" method="None"
+			 size="15" default="" xpath="/isRunning" />
+
+	</Fields>
+
+	<Commands>
+		<Command id="btnAdd" desc="新增" type="addrecord" url="" txn="" icon="fa fa-plus"/>
+		<Command id="btnSave"  desc="保存" type="asyncsubmit" url="#" flowid="com.ruimin.ifs.mng.comp.BopTimedSchedulerManageAction:saveOrUpdate1" icon="fa fa-save"/>
+		<Command id="btnDel" desc="删除" type="none" flowid="" url="#" txn="" icon="fa fa-remove"/>
+		<Command id="btnDelete" desc="删除" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BopTimedSchedulerManageAction:delete" url="#" txn="" icon="fa fa-remove"/>
+		<Command id="btnMod" desc="修改" type="none" url="" txn="" icon="fa fa-pencil" />
+	</Commands>
+</Data>
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://sqlmap.rql.org/rql-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://sqlmap.rql.org/rql-mapper http://sqlmap.rql.org/rql-mapper">
+
+	<!-- 银行信息查询 -->
+	<select id="queryFrontMachineStatus" paramType="map" resultType="com.ruimin.ifs.login.process.bean.FrontMachine">
+        <![CDATA[select bank_name, bank_ip_host, expire_date
+            from tbl_be_bank]]>
+        <![CDATA[order by bank_code]]>
+    </select>
+</mapper>

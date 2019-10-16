@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+   <Define desc="批量任务表" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:queryBatchJobInf" expmaxrcd="100" flowctxid="" flowretid="" />
+   <Fields>
+      <Field id="jobno" desc="任务编号" edittype="integerbox" datatype="int" required="true" xpath="/jobno" />
+      <Field id="preJobno" desc="前置任务编号" edittype="integerbox" datatype="int" xpath="/preJobno" />
+      <Field id="preAutorun" desc="前置任务是否自动运行" edittype="combobox" datasource="DDIC:100" datatype="string" xpath="/preAutorun" required="true" default="1"/>
+      <Field id="systemType" desc="系统类型" edittype="textbox" datatype="string" xpath="/systemType" size="2"/>
+      <Field id="runonline" desc="是否允许在联机状态下运行" edittype="combobox" datasource="LIST:0,不允许;1,允许;2,忽略联机状态" datatype="string" xpath="/runonline"/>
+      <Field id="miscflgs" desc="扩展字段" edittype="textarea" rows="3" colspan="4" width="400" datatype="string" xpath="/miscflgs" size="128"/>
+      <Field id="misc" desc="任务描述" edittype="textarea" rows="3" colspan="4" width="400" datatype="string" xpath="/misc" size="128"/>
+      <Field id="opr" desc="操作" xpath="/jobno"/>
+      <Field id="flg" desc="标识"/>
+   </Fields>
+   <Commands>
+      <Command id="btnJobAdd" desc="添加任务" type="addrecord" url="#" txn="" icon="fa fa-plus"/>
+      <Command id="btnJobSave" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:saveOrUpdateBatchJob" url="#" txn="" icon="fa fa-save"/>
+   	  <Command id="btnJobDelete" desc="删除" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:deleteBatchJob" url="#" txn="" icon="fa fa-remove"/>
+   </Commands>
+</Data>

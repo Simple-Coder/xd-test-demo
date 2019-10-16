@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="支付监控信息" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.login.comp.RspTimeMonitorAction:queryRspTimeInfo" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+	    <!-- 显示字段 -->
+		<Field id="bankname" desc="银行" align="center" status="F" required="true" edittype="textbox" datatype="string" size="30" xpath="/bankname" />
+		<Field id="avgtime" desc="平均响应时长" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/avgtime" />
+		<Field id="maxtime" desc="最长响应时长" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/maxtime" />
+    </Fields>
+	<Commands>
+	</Commands>
+</Data>

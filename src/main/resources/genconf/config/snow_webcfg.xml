@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- snowweb 页面显示调整 -->
+<webcfgs>
+	<webcfg>
+		<!-- 表格头部对齐方式 -->
+		<cfgName>gridHeadAlign</cfgName>
+		<cfgValue>center</cfgValue>
+	</webcfg>
+	<webcfg>
+		<!-- 查询是否显示重置按钮 -->
+		<cfgName>queryResetBtn</cfgName>
+		<cfgValue>true</cfgValue>
+	</webcfg>
+	<webcfg>
+		<!-- 表单输入框默认宽度,默认150 -->
+		<cfgName>inputWidth</cfgName>
+		<cfgValue>200</cfgValue>
+	</webcfg>
+	<webcfg>
+		<!-- 允许同时打开最大tab页数，小于等于0表示不限制 -->
+		<cfgName>maxTabCount</cfgName>
+		<cfgValue>${web.maxTabCount}</cfgValue>
+	</webcfg>
+	<webcfg>
+		<!-- 默认使用的主题样式 -->
+		<cfgName>theme</cfgName>
+		<cfgValue>Ace</cfgValue>
+	</webcfg>
+	<webcfg>
+		<!-- 页面附加META，支持多个，HTTP-EQUIV 与CONTENT以@分隔，多个以#分隔 -->
+		<cfgName>pageAddMeta</cfgName>
+		<cfgValue></cfgValue>
+	</webcfg>
+	<webcfg>
+		<!-- 页面附加css，支持多个，以逗号,分隔 -->
+		<cfgName>pageAddCss</cfgName>
+		<cfgValue>pages/example/css/demo.css</cfgValue>
+	</webcfg>
+	<webcfg>
+		<!-- 页面附加js，支持多个，以逗号,分隔 -->
+		<cfgName>pageAddJs</cfgName>
+		<cfgValue></cfgValue>
+	</webcfg>
+	<webcfg>
+		<!-- form表单提交是否进行转码，默认为false -->
+		<!-- 在servlet2.5下form表单提交中文编码默认为iso-8859-1需要转码，在servlet3.0下采用与容器一致编码，不需要转码 -->
+		<cfgName>formTranscode</cfgName>
+		<cfgValue>false</cfgValue>
+	</webcfg>
+	<webcfg>
+		<!-- form表单提交内容编码，默认为ISO08859-1 -->
+		<cfgName>formEncoding</cfgName>
+		<cfgValue>ISO-8859-1</cfgValue>
+	</webcfg>
+	<webcfg>
+		<!-- 登录验证码长度，空或0表示不使用,最少4位 -->
+		<cfgName>loginVerifyCode</cfgName>
+		<cfgValue>${web.loginVerifyCode}</cfgValue>
+	</webcfg>
+</webcfgs>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+   <Define desc="任务下拉框" type="call" pagesize="1000" log="false" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:selectBatchJob" expmaxrcd="100" flowctxid="" flowretid="" />
+   <Fields>
+      <Field id="jobKey" desc="任务编号"  xpath="/jobKey" width="100"/>
+      <Field id="jobName" desc="任务名称" xpath="/jobName" />
+   </Fields>
+   <Commands>
+   </Commands>
+</Data>

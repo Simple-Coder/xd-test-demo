@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="批量监控" type="call" pagesize="15" log="false" flowid="com.ruimin.ifs.batch.comp.BatchMonitorAction:listBatchMonitorTot" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="batchstatus" desc="当前运行" status="F" datatype="string"  xpath="/statusDisp"/>
+		<Field id="batchcurrentstep" desc="当前运行作业" status="F" datatype="string"  xpath="/currentStep/stepDispName"/>
+		<Field id="batchsubstepcount" desc="总步骤数" status="F" datatype="int"  xpath="/subStepCount"/>
+		<Field id="successstepcount" desc="成功完成步骤数" status="F" datatype="int"  xpath="/successStepCount"/>
+		<Field id="failstepcount" desc="失败步骤数" status="F" datatype="int"  xpath="/failStepCount"/>
+	</Fields>
+</Data>

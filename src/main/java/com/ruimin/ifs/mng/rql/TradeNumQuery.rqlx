@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://sqlmap.rql.org/rql-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://sqlmap.rql.org/rql-mapper http://sqlmap.rql.org/rql-mapper">
+
+	<!-- 交易量查询 -->
+	<select id="queryTradeNum" paramType="map" resultType="com.ruimin.ifs.mng.process.bean.TradeQueryVo">
+        select <if test = "respSys != ''"><![CDATA[ resp_sys ,]]></if>
+               <if test = "respSys == ''"><![CDATA[ '-' as resp_sys ,]]></if>
+               <if test = "tranCode != ''"><![CDATA[ tran_code , ]]></if>
+               <if test = "tranCode == ''"><![CDATA[ '-' as tran_code , ]]></if>
+               total_num,
+               success_num,
+               concat((round(success_num / total_num, 2) * 100),'%') as success_per,
+               failure_num,
+               concat((round(failure_num / total_num, 2) * 100),'%') as failure_per,
+               COALESCE(time_out_num,0) as time_out_num
+          from (select
+                         <if test = 'respSys =="respSys" and tranCode == "" '><![CDATA[ a.resp_sys,]]></if>
+                         <if test = 'tranCode =="" and respSys =="" '><![CDATA[ a.resp_sys,a.tran_code,]]></if>
+                         <if test = 'tranCode == "tranCode" and respSys =="respSys" '><![CDATA[ a.resp_sys,a.tran_code,]]></if>
+                         <if test = 'tranCode =="tranCode" and respSys == "" '><![CDATA[ a.tran_code,]]></if>
+                       count(1) as total_num,
+                       count(case
+                               when a.resp_code in('000' ,'000000','242') then
+                                1
+                               else
+                                null
+                             end) as success_num,
+                       count(case
+                               when a.resp_code not in('','000' ,'000000','242') then
+                                1
+                               else
+                                null
+                             end) as failure_num,
+                       count(case
+                               when a.resp_code in( '')  then
+                                1
+                               else
+                                null
+                             end) as time_out_num
+                  from (select tran_code,coalesce(resp_code,'') as resp_code,resp_sys,req_sys from tbl_be_record_log) a
+                 where 1=1
+                 <if test = "tradeTimeStart != ''"><![CDATA[and req_time >= #{tradeTimeStart} ]]></if>
+                 <if test = "tradeTimeEnd != ''"><![CDATA[and resp_time  <= #{tradeTimeEnd}]]></if>
+                 group by
+                 <if test = 'tranCode == "tranCode" and respSys =="" '><![CDATA[ a.tran_code]]></if>
+                 <if test = 'tranCode == "tranCode" and respSys =="respSys" '><![CDATA[ a.tran_code,a.resp_sys]]></if>
+                 <if test = 'respSys =="respSys" and tranCode != "tranCode" '><![CDATA[ a.resp_sys]]></if>
+                 <if test = 'tranCode =="" and respSys =="" '><![CDATA[ a.tran_code,a.resp_sys]]></if>
+                 ) aa
+    </select>
+    <select id="getHighchartsData" paramType="map" resultType="com.ruimin.ifs.mng.process.bean.TradeQueryVo">
+        	select t1.trade_code as tran_code,
+        			   COALESCE(total_num,0) as total_num,
+        			   COALESCE(success_num,0) as success_num,
+        			   concat((round(COALESCE(success_num,0) / COALESCE(total_num,1), 2) * 100),'%') as success_per,
+        			   COALESCE(failure_num,0) as failure_num,
+        			   concat((round(COALESCE(failure_num,0) / COALESCE(total_num,1), 2) * 100),'%') as failure_per,
+        			   COALESCE(time_out_num,0) as time_out_num
+        		  from tbl_be_trade_cfg t1 left join (select a.tran_code,
+        					   count(1) as total_num,
+        					   count(case
+        							   when a.resp_code in( '000' ,'000000','242') then
+        								1
+        							   else
+        								null
+        							 end) as success_num,
+        					   count(case
+        							   when a.resp_code not in( '','000' ,'000000','242')  then
+        								1
+        							   else
+        								null
+        							 end) as failure_num,
+        					   count(case
+        							   when a.resp_code in( '')  then
+        								1
+        							   else
+        								null
+        							 end) as time_out_num
+        				  from
+        				  (select tran_code,coalesce(resp_code,'') as resp_code from tbl_be_record_log
+        				  where 1=1
+        				  <if test = "tradeTimeStart != ''"><![CDATA[and req_time >= #{tradeTimeStart} ]]></if>
+                          <if test = "tradeEndTime != ''"><![CDATA[and resp_time <= #{tradeEndTime} ]]></if>
+                          <if test = "bankSelect != ''"><![CDATA[and resp_sys <= #{bankSelect} ]]></if>
+        				  ) a
+        				 group by
+        				 a.tran_code
+        				 ) t2 on t1.trade_code=t2.tran_code order by tran_code
+    </select>
+</mapper>

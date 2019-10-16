@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://sqlmap.rql.org/rql-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://sqlmap.rql.org/rql-mapper http://sqlmap.rql.org/rql-mapper">
+
+	<!-- 银行信息模糊查询 -->
+	<select id="queryBankInformationList" paramType="map" resultType="com.ruimin.ifs.po.TblBeBank">
+        <![CDATA[select
+            uuid,bank_code,bank_name,bank_number,bank_address,bank_account,bank_account_name,bank_internal_account,bank_status,bank_cut_trade_code,bank_signing_date,
+            bank_desc,bank_client_code,bank_operator,bank_operator_pwd,bank_interface_address,bank_message_type,bank_warning_threshold,
+            bank_termination_threshold,create_date,last_update_user,last_update_time,expire_date,bank_ip_host
+            from tbl_be_bank
+            where 1=1 ]]>
+        <if test = "qbankNumber != ''"><![CDATA[and bank_number = #{qbankNumber} ]]></if>
+        <if test = "qBankName != ''"><![CDATA[and bank_name like #{qBankName} ]]></if>
+        <![CDATA[order by bank_code]]>
+    </select>
+
+    <!-- 银行信息根据银行代码查询 -->
+    <select id="queryBankInformationCountCode" paramType="map" resultType="int">
+        <![CDATA[select
+            count(1)
+            from tbl_be_bank
+            where 1=1 ]]>
+        <if test = "bankCode != ''"><![CDATA[and bank_code = #{bankCode} ]]></if>
+    </select>
+     <!-- 银行信息根据银行代码查询 -->
+    <select id="queryBankByBankCode" paramType="map" resultType="com.ruimin.ifs.po.TblBeBank">
+        <![CDATA[select
+            bank_name
+            from tbl_be_bank
+            where 1=1 ]]>
+        <if test = "bankCode != ''"><![CDATA[and bank_code = #{bankCode} ]]></if>
+    </select>
+
+    <!-- 银行信息根据银行名称查询 -->
+    <select id="queryBankInformationCountName" paramType="map" resultType="int">
+        <![CDATA[select
+            count(1)
+            from tbl_be_bank
+            where 1=1 ]]>
+        <if test = "bankName != ''"><![CDATA[and bank_name = #{bankName} ]]></if>
+    </select>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://sqlmap.rql.org/rql-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://sqlmap.rql.org/rql-mapper http://sqlmap.rql.org/rql-mapper">
+
+	<!-- 接入银行返回码配置查询 -->
+	<select id="queryReturnCodeList" paramType="map" resultType="com.ruimin.ifs.po.TblBeBankReturnCode">
+        <![CDATA[
+        SELECT UUID,BANK_CODE,BE_RETURN_CODE,RETURN_CODE,RETURN_CODE_DESC,STATUS,CREATE_DATE,LAST_UPDATE_USER,LAST_UPDATE_TIME
+        FROM TBL_BE_BANK_RETURN_CODE
+            WHERE 1=1 ]]>
+        <if test = "queryBankCode != ''"><![CDATA[AND BANK_CODE = #{queryBankCode} ]]></if>
+        <if test = "queryBeReturnCode != ''"><![CDATA[AND BE_RETURN_CODE = #{queryBeReturnCode} ]]></if>
+        <![CDATA[ORDER BY LAST_UPDATE_TIME]]>
+    </select>
+
+    <!-- 交易配置信息查询 -->
+	<select id="queryBeReturnCode" paramType="map" resultType="int">
+        <![CDATA[
+        SELECT COUNT(1)
+        FROM TBL_BE_BANK_RETURN_CODE
+            WHERE 1=1 ]]>
+        <if test = "bankCode != ''"><![CDATA[AND BANK_CODE = #{bankCode} ]]></if>
+        <if test = "beReturnCode != ''"><![CDATA[AND BE_RETURN_CODE = #{beReturnCode} ]]></if>
+        <if test = "returnCode != ''"><![CDATA[AND RETURN_CODE = #{returnCode} ]]></if>
+    </select>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="报文日志查询" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.mng.comp.MsgLogQueryAction:queryMsgLog" expmaxrcd="100" flowctxid="false" flowretid="false" />
+	<Fields>
+		<Field id="uuid" desc="id" required="false" edittype="textbox" datatype="string" method="None" readonly="false" size="32" status="N" align="center" default="false"  xpath="/uuid" />
+		<Field id="reqSeqNo" desc="交易流水号" required="false" edittype="textbox" datatype="string" method="None"	readonly="false" size="32" align="center"  status="N" default="false" xpath="/reqSeqNo" />
+		<Field id="reqTime" desc="请求时间" required="false" edittype="textbox" datatype="string" method="None"	readonly="false" size="17"  align="center" status="F" default="false" xpath="/reqTime" />
+		<Field id="respTime" desc="响应时间" required="false" edittype="textbox" datatype="string" method="None" readonly="false" size="17"  align="center" status="F" default="false" xpath="/respTime" />
+
+
+        <Field id="reqSys" desc="请求系统" align="center" status="F" edittype="combobox" datatype="string" required="true"
+              datasource="DDIC:301"
+              readonly="false" multiple="false"  init="true" xpath="/reqSys"/>
+        <!--<Field id="respSys" desc="响应系统" align="center" status="F" edittype="textbox" datatype="string" required="true"
+                        method="com.ruimin.ifs.mng.comp.BankInformationAction.getBankName"
+                        readonly="false" multiple="false"  init="true" xpath="/respSys"/>-->
+
+        <Field id="respSys" desc="响应系统" align="center" status="F" edittype="combobox" datatype="string" required="true"
+                                 datasource="DDIC:301"
+                                readonly="false" multiple="false"  init="true" xpath="/respSys"/>
+
+	 	<Field id="tranCode" desc="交易码" required="false" edittype="textbox" datatype="string" method="None"  readonly="false" size="20" status="N" align="center" default="" xpath="/tranCode" />
+	 	<Field id="amount" desc="交易金额" required="false" edittype="textbox" datatype="string" method="None"  readonly="false" size="20" status="N" align="center" default="" xpath="/amount" />
+        <Field id="tranCodeName" desc="交易码名称" required="false" edittype="combobox" datatype="string" method="None" datasource="DDIC:300" readonly="false" size="20" status="N" align="center" default="" xpath="/tranCode" />
+        <Field id="reqMsg" desc="请求报文" status="F"  edittype="textarea"  required="false"  datatype="string" method="None"  rows="25" size="32000"  xpath="/reqMsg" default="" width="400"/>
+        <Field id="respMsg" desc="响应报文" status="F" align="center" edittype="textarea"  required="false"  datatype="string" method="None" rows="25" size="32000"  xpath="/respMsg" default="" width="400"/>
+        <Field id="respCode" desc="响应码" required="false" edittype="textbox"  datatype="string" method="None" readonly="false" size="256" align="center" status="F" default="" xpath="/respCode" />
+        <Field id="reqAccounts" desc="请求账号" required="false" edittype="textbox" datatype="string" method="None" readonly="false" align="center" size="256" status="F" default="" xpath="/reqAccounts" />
+        <Field id="respAccounts" desc="对手账号" required="false" edittype="textbox" datatype="string" method="None" readonly="false" align="center" size="256" status="F" default="" xpath="/respAccounts" />
+        <Field id="originalSeqNo" desc="原交易流水号" required="false" edittype="textbox" datatype="string" method="None" readonly="false" align="center" size="256" status="F" default="" xpath="/originalSeqNo" />
+        <Field id="serverIp" desc="银企子系统IP" required="false" edittype="textbox" datatype="string" method="None" readonly="false" align="center" size="256" status="F" default="" xpath="/serverIp" />
+        <Field id="respDesc" desc="响应描述" required="false" edittype="textbox" datatype="string" method="None" readonly="false" align="left" size="255" status="F" default="" xpath="/respDesc" />
+        <Field id="msgLog" desc="日志详情" status="F" required="false" edittype="textbox" datatype="string" method="None" readonly="false" size="100" default="" xpath="/msgLog" />
+        <Field id="opr" desc="操作" required="false" edittype="textbox"  datatype="string" method="None" readonly="true"   default="" xpath=""   />
+		<!-- 查询条件 -->
+		<Field id="msgStartTime" desc="开始时间" edittype="datetimebox" xpath="" datatype="timestamp" default="" readonly="false" status="F" />
+		<Field id="msgEndTime" desc="结束时间" edittype="datetimebox" xpath="" datatype="timestamp" default="" readonly="false" status="F" />
+		<Field id="msgNo" desc="报文流水号" edittype="textbox" datatype="string" xpath="" status="F" default="" />
+		<Field id="fromSys" desc="发起系统" edittype="combobox" datasource="DDIC:301" datatype="string" xpath="" status="F" default="" />
+		<Field id="toSys" desc="接收系统" edittype="combobox" datasource="DDIC:301" datatype="string" xpath="" status="F" default="" />
+		<Field id="tradeNum" desc="交易码名称" edittype="combobox" datatype="string" xpath="" datasource="DDIC:300" status="F" default="" />
+		<Field id="msgType" desc="报文类型" required="false" edittype="combobox" datatype="string" method="None" readonly="false" size="2" datasource="DDIC:200"  status="F" xpath="/msgType"/>
+		<Field id="msgAcc" desc="银行账号" required="false" edittype="textbox" datatype="string" method="None" readonly="false" size="32"  status="F" />
+		<Field id="dealStatus" desc="处理状态" required="false" edittype="combobox" datatype="string" method="None" readonly="false" size="2" datasource="DDIC:201" status="F" xpath="/dealStatus"/>
+	</Fields>
+</Data>

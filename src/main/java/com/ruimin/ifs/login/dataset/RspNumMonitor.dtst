@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="支付监控信息" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.login.comp.RspNumMonitorAction:queryRspNumData" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+	    <!-- 显示字段 -->
+		<Field id="respCode" desc="响应码" align="center" status="F" required="true" edittype="textbox" datatype="string" size="30" xpath="/respCode" />
+		<Field id="respName" desc="响应描述" align="center" status="F" required="true" edittype="textbox" datatype="string" size="30" xpath="/respName" />
+		<Field id="totalNum" desc="总量" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/totalNum" />
+		<Field id="totalPer" desc="比例" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/totalPer" />
+    </Fields>
+	<Commands>
+	</Commands>
+</Data>

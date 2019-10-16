@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+	<Define desc="批量运行方式" type="call" pagesize="10" log="true" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:getBatchRunModeParam" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="paramId" desc="参数主键" readonly="true" required="false"  xpath="/paramId"  />
+		<Field id="magicId" desc="参数标识"  readonly="true" required="false"  xpath="/magicId"  />
+		<Field id="paramValueTx" desc="批量运行方式"  required="true" edittype="combobox" datasource="LIST:1,自动运行;0,手工运行" xpath="/paramValueTx"  />
+		<Field id="desc0" desc="参数说明"  readonly="true" edittype="textarea" required="false" datatype="string" method="None" size="30" xpath="/desc0"  />
+	</Fields>
+	<Commands>
+		<Command id="btnRunModeSave" desc="保存运行方式" type="asyncsubmit" flowid="com.ruimin.ifs.batch.comp.BatchProcAction:saveOrUpdateBatchRunMode" url="#" txn="fa fa-save" />
+	</Commands>
+</Data>

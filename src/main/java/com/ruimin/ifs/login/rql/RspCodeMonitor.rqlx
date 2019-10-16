@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://sqlmap.rql.org/rql-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://sqlmap.rql.org/rql-mapper http://sqlmap.rql.org/rql-mapper">
+
+	<!-- 响应时长查询 -->
+	<select id="queryRspCode" paramType="map" resultType="com.ruimin.ifs.login.process.bean.RspCodeVo">
+        select resp_code,count(resp_code) as total_num from tbl_be_record_log t1
+                where  1=1
+                <if test = "req_time != ''"><![CDATA[and req_time >= #{req_time} ]]></if>
+                <if test = "resp_time != ''"><![CDATA[and resp_time <= #{resp_time} ]]></if>
+                group by resp_code
+    </select>
+</mapper>

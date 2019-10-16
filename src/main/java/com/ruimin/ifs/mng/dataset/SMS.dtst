@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="交易代码配置" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.mng.comp.SMSAction:queryBeReturnCode" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+		<Field id="uuid" desc="id" status="F" edittype="textbox" datatype="string" size="32" xpath="/uuid" />
+		<Field id="smsType" desc="短信类型" status="F" required="true" align="center" edittype="combobox" datatype="string" size="10" datasource="DDIC:207" xpath="/smsType" />
+		<Field id="phoneNumber" desc="手机号" status="F" align="center" required="true" edittype="textbox" datatype="string" size="20" xpath="/phoneNumber" />
+        <Field id="smsMessage" desc="短信内容" align="center" status="F" required="true" edittype="textbox" datatype="string" size="200" xpath="/smsMessage"/>
+        <Field id="status" desc="状态" align="center" status="F" required="true" edittype="combobox" datatype="string" size="1" datasource="DDIC:208" xpath="/status" />
+        <Field id="createDate" desc="创建时间" align="center" status="F" readonly="true" edittype="textbox" datatype="timestamp" required="false" size="30" xpath="/createDate" default="" width="400"/>
+        <Field id="lastUpdateUser" desc="操作人" align="center" status="F" readonly="true" edittype="textbox" required="false"  datatype="string" size="30" xpath="/lastUpdateUser" default="" width="400"/>
+        <Field id="lastUpdateTime" desc="更新时间" align="center" status="F" readonly="true" edittype="textbox"  datatype="string" required="false" size="30" xpath="/lastUpdateTime" default="" width="400"/>
+		<Field id="opr" desc="操作"  edittype="textbox" datatype="string" xpath="" />
+		<!-- 查询条件 -->
+		<Field id="querySmsType" desc="短信类型" edittype="combobox" datatype="string" datasource="DDIC:207" />
+		<Field id="queryStatus" desc="状态" edittype="combobox" datatype="string" datasource="DDIC:208" />
+	</Fields>
+	<Commands>
+	    <!--<Command id="btnAdd" desc="新增" type="addrecord" url="#" txn="" icon="fa fa-plus"/>
+        <Command id="btnSaveAdd" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.TradeDefinitionAction:addTradeDefinition" url="#" txn=""/>
+        <Command id="btnSaveUpdate" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.TradeDefinitionAction:updateTradeDefinition" url="#" txn=""/>
+        <Command id="btnDelete" desc="删除" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.TradeDefinitionAction:deleteTradeDefinition" url="#" txn=""/>-->
+    </Commands>
+</Data>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns="http://www.rmitec.cn/dtst-mapper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rmitec.cn/dtst-mapper http://www.rmitec.cn/dtst-mapper">
+<Define desc="银行信息" type="call" pagesize="10" log="false" flowid="com.ruimin.ifs.mng.comp.BankInformationAction:queryBankInformation" expmaxrcd="100" flowctxid="" flowretid="" />
+	<Fields>
+	    <!-- 显示字段 -->
+		<Field id="uuid" desc="主键ID" align="center" status="F" edittype="textbox" datatype="string" size="32" xpath="/uuid" />
+		<Field id="bankCode" desc="行别代码" align="center" status="F" required="true" edittype="textbox" datatype="string" size="10" xpath="/bankCode" />
+		<Field id="bankName" desc="银行名称" align="center" status="F" required="true" edittype="textbox" datatype="string" size="30" xpath="/bankName" />
+		<Field id="bankNumber" desc="银行联行号" align="center" status="F" required="true" edittype="textbox" datatype="string" size="20" xpath="/bankNumber" />
+		<Field id="bankAddress" desc="开户行地址" align="center" status="F" required="true" edittype="textbox" datatype="string" size="200" xpath="/bankAddress" />
+		<Field id="bankAccount" desc="银行账号" align="center" status="F" required="true" edittype="textbox" datatype="string" size="20" xpath="/bankAccount" />
+		<Field id="bankAccountName" desc="银行户名" align="center" status="F" required="true" edittype="textbox" datatype="string" size="30" xpath="/bankAccountName" />
+		<Field id="bankInternalAccount" desc="内部账号" align="center" status="F" required="true" edittype="textbox" datatype="string" size="20" xpath="/bankInternalAccount" />
+		<Field id="bankStatus" desc="银行状态" align="center" status="F" required="true" edittype="combobox" datatype="string" datasource="DDIC:118" size="10" xpath="/bankStatus" />
+		<Field id="bankCutTradeCode" desc="银行日切暂停交易代码" align="center" status="F" edittype="textbox" datatype="string" size="100" tooltip="交易代码请用英文逗号,隔开" xpath="/bankCutTradeCode" />
+		<Field id="bankSigningDate" desc="签约日期" align="center" status="F" required="true" edittype="datebox" datatype="date" size="30" xpath="/bankSigningDate" />
+		<Field id="bankDesc" desc="银行描述" align="center" status="F" edittype="textbox" datatype="string" size="200" xpath="/bankDesc" />
+		<Field id="bankClientCode" desc="银行客户号" align="center" status="F" required="true" edittype="textbox" datatype="string" size="20" xpath="/bankClientCode" />
+		<Field id="bankOperator" desc="操作员" align="center" status="F" required="true" edittype="textbox" datatype="string" size="20" xpath="/bankOperator" />
+		<Field id="bankOperatorPwd" desc="操作密码" align="center" status="F" required="true" edittype="textbox" datatype="string" size="20" xpath="/bankOperatorPwd" />
+		<Field id="bankInterfaceAddress" desc="接口地址" align="center" status="F" required="true" edittype="textbox" datatype="string" size="100" tooltip="协议为http时，填写【http://ip:port/上下文路径】；协议为tcp时填写【ip:port】" xpath="/bankInterfaceAddress" />
+		<Field id="bankIpHost" desc="接口IP:端口" align="center" status="F" required="true" edittype="textbox" datatype="string" size="30" xpath="/bankIpHost" />
+		<Field id="bankMessageType" desc="报文类型" align="center" status="F" required="true" edittype="combobox" datatype="string" datasource="DDIC:119" size="10" xpath="/bankMessageType" />
+		<Field id="bankWarningThreshold" desc="异常警告阈值" align="center" status="F" required="true" edittype="textbox" rule="isNum" errmsg="请输入数字" datatype="string" size="20" xpath="/bankWarningThreshold" />
+		<Field id="bankTerminationThreshold" desc="终止服务阈值" align="center" status="F" required="true" edittype="textbox" rule="isNum" errmsg="请输入数字" datatype="string" size="20" xpath="/bankTerminationThreshold" />
+		<Field id="expireDate" desc="银行到期日" align="center" status="F" required="true" edittype="textbox" datatype="string" rule="isNum" errmsg="请输入年月日yyMMdd" size="10" xpath="/expireDate" />
+		<Field id="createDate" desc="创建时间" align="center" status="F" edittype="textbox" datatype="string" size="20" xpath="/createDate" />
+		<Field id="lastUpdateUser" desc="编辑人" align="center" status="F" edittype="textbox" datatype="string" size="20" xpath="/lastUpdateUser" />
+		<Field id="lastUpdateTime" desc="编辑时间" align="center" status="F" edittype="textbox" datatype="string" size="20" xpath="/lastUpdateTime" />
+		<Field id="opr" desc="操作" align="center" edittype="textbox" datatype="string" xpath="" />
+		<!-- 查询条件 -->
+		<Field id="qBankName" desc="银行名称" datatype="string" />
+		<Field id="qbankNumber" desc="银行联行号" datatype="string" />
+    </Fields>
+	<Commands>
+		<Command id="btnAdd" desc="新增" type="addrecord" url="#" txn="" icon="fa fa-plus"/>
+		<Command id="btnSaveAdd" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BankInformationAction:insertBankInformation" url="#" txn=""/>
+		<Command id="btnSaveUpdate" desc="保存" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BankInformationAction:updateBankInformation" url="#" txn=""/>
+		<Command id="btnDelete" desc="删除" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BankInformationAction:deleteBankInformation" url="#" txn=""/>
+
+		<Command id="btnBankStart" desc="启用" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BankInformationAction:startBankStatus" url="#" txn=""/>
+		<Command id="btnBankStop" desc="停用" type="asyncsubmit" flowid="com.ruimin.ifs.mng.comp.BankInformationAction:stopBankStatus" url="#" txn=""/>
+	</Commands>
+</Data>
