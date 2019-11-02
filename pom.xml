@@ -35,7 +35,7 @@
 		<apache.shiro.version>1.2.1</apache.shiro.version>
 		<ehcache.version>2.5.1</ehcache.version>
 		<pinyin4j.version>2.5.0</pinyin4j.version>
-		<alibaba.fastjson.version>1.2.20</alibaba.fastjson.version>
+		<alibaba.fastjson.version>1.2.25</alibaba.fastjson.version>
 	</properties>
 	<repositories>
 		<repository>
